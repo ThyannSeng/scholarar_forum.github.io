@@ -281,7 +281,7 @@
   </nav>
 
    <!-- Main Content -->
-   <div class="container mx-auto mt-8 space-y-8 px-6">
+   <div class="container mx-auto mt-8 space-y-10 px-64">
 
     <!-- Forum Categories -->
     <div class="bg-white p-6 rounded shadow-sm">
@@ -314,100 +314,163 @@
   </div>
 
   <!-- Recent Discussions -->
-  <div class="container mx-auto px-6">
+  <div class="container mx-auto mt-8 space-y-10 px-64">
     <div class="bg-white shadow-lg rounded-lg p-6 mt-5">
       <div class="flex items-center justify-between border-b border-zinc-200 pb-4">
         <h1 class="text-xl font-semibold">Recent Discussions</h1>
         <div class="flex">
           <div class="relative">
-            <input
-              type="text"
-              placeholder="Quick search..."
-              class="pl-4 pr-10 py-2 w-64 bg-white text-zinc-700 placeholder-zinc-500 rounded-full border border-blue-700 focus:outline-none focus:border-blue-500"
-            />
+            <input type="text" placeholder="Quick search..." class="pl-4 pr-10 py-2 w-64 bg-white text-zinc-700 placeholder-zinc-500 rounded-full border border-blue-700 focus:outline-none focus:border-blue-500" />
           </div>
         </div>
       </div>
-      <div class="mt-4">
-        <div class="py-4 border-b border-zinc-200 flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="p-3 bg-blue-600 text-white rounded-full mr-4">
-              <i class="fas fa-book"></i>
-            </div>
-            <div>
-              <h2 class="font-semibold">MEXT Scholarship</h2>
-              <p>An exclusive MEXT Scholarship</p>
-              <span class="text-blue-500 hover:text-blue-600 cursor-pointer">Sub-forums</span>
-            </div>
-          </div>
-          <div class="flex items-center">
-            <span class="bg-green-200 text-green-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded">New</span>
-            <p>7.8K Threads</p>
-            <p class="ml-4">1.1M Messages</p>
-          </div>
-        </div>
+      <div id="discussions-container" class="mt-4">
+        <!-- Discussions will be dynamically inserted here -->
       </div>
 
-      <div class="mt-4">
-        <div class="py-4 border-b border-zinc-200 flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="p-3 bg-blue-600 text-white rounded-full mr-4">
-              <i class="fas fa-book"></i>
-            </div>
-            <div>
-              <h2 class="font-semibold">Thailand Scholarship</h2>
-              <p>An exclusive Thailand Scholarship</p>
-              <span class="text-blue-500 hover:text-blue-600 cursor-pointer">Sub-forums</span>
-            </div>
+      <!-- Pagination Controls -->
+      <div class="flex justify-center mt-6">
+        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+          <button id="prev-btn" class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
+            Previous
+          </button>
+          <div id="pagination-numbers" class="flex space-x-1">
+            <!-- Page numbers will be dynamically inserted here -->
           </div>
-          <div class="flex items-center">
-            <span class="bg-green-200 text-green-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded">New</span>
-            <p>7.8K Threads</p>
-            <p class="ml-4">1.1M Messages</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-4">
-        <div class="py-4 border-b border-zinc-200 flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="p-3 bg-blue-600 text-white rounded-full mr-4">
-              <i class="fas fa-book"></i>
-            </div>
-            <div>
-              <h2 class="font-semibold">CP Scholarship</h2>
-              <p>An exclusive CP Scholarship</p>
-              <span class="text-blue-500 hover:text-blue-600 cursor-pointer">Sub-forums</span>
-            </div>
-          </div>
-          <div class="flex items-center">
-            <span class="bg-green-200 text-green-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded">New</span>
-            <p>7.8K Threads</p>
-            <p class="ml-4">1.1M Messages</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-4">
-        <div class="py-4 border-b border-zinc-200 flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="p-3 bg-blue-600 text-white rounded-full mr-4">
-              <i class="fas fa-book"></i>
-            </div>
-            <div>
-              <h2 class="font-semibold">Chinese Scholarship</h2>
-              <p>An exclusive Chinese Scholarship</p>
-              <span class="text-blue-500 hover:text-blue-600 cursor-pointer">Sub-forums</span>
-            </div>
-          </div>
-          <div class="flex items-center">
-            <span class="bg-green-200 text-green-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded">New</span>
-            <p>7.8K Threads</p>
-            <p class="ml-4">1.1M Messages</p>
-          </div>
-        </div>
+          <button id="next-btn" class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
+            Next
+          </button>
+        </nav>
       </div>
     </div>
+  </div>
+
+  <script>
+    // Example data
+    const discussions = [
+      { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      { title: "GKS Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // Add more discussion data as needed
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // // Add more discussion data as needed
+
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // // Add more discussion data as needed
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // // Add more discussion data as needed
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // // Add more discussion data as needed
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // // Add more discussion data as needed
+
+      // ...
+    ];
+
+    const itemsPerPage = 10;
+    let currentPage = 1;
+
+    const discussionsContainer = document.getElementById('discussions-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const paginationNumbers = document.getElementById('pagination-numbers');
+
+    // Function to render discussions
+    function renderDiscussions() {
+      // Calculate the start and end index of discussions for the current page
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentDiscussions = discussions.slice(startIndex, endIndex);
+
+      // Render discussions
+      discussionsContainer.innerHTML = currentDiscussions.map(discussion => `
+        <div class="py-4 border-b border-zinc-200 flex items-center justify-between">
+          <div class="flex items-center">
+            <div class="p-3 bg-blue-600 text-white rounded-full mr-4">
+              <i class="fas fa-book"></i>
+            </div>
+            <div>
+              <h2 class="font-semibold">${discussion.title}</h2>
+              <p>${discussion.description}</p>
+              <span class="text-blue-500 hover:text-blue-600 cursor-pointer">Sub-forums</span>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <span class="bg-green-200 text-green-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded">New</span>
+            <p>${discussion.threads}</p>
+            <p class="ml-4">${discussion.messages}</p>
+          </div>
+        </div>
+      `).join('');
+
+      // Update button states
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === Math.ceil(discussions.length / itemsPerPage);
+
+      // Render page numbers
+      renderPageNumbers();
+    }
+
+    // Function to render page numbers
+    function renderPageNumbers() {
+      const totalPages = Math.ceil(discussions.length / itemsPerPage);
+      paginationNumbers.innerHTML = '';
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.innerText = i;
+        pageButton.classList.add('relative', 'inline-flex', 'items-center', 'px-4', 'py-2', 'border', 'text-sm', 'font-medium');
+
+        if (i === currentPage) {
+          pageButton.classList.add('z-10', 'bg-blue-50', 'border-blue-500', 'text-blue-600');
+        } else {
+          pageButton.classList.add('bg-white', 'border-zinc-300', 'text-zinc-500', 'hover:bg-zinc-50');
+        }
+
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          renderDiscussions();
+        });
+
+        paginationNumbers.appendChild(pageButton);
+      }
+    }
+
+    // Add event listeners to pagination buttons
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderDiscussions();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < Math.ceil(discussions.length / itemsPerPage)) {
+        currentPage++;
+        renderDiscussions();
+      }
+    });
+
+    // Initial render
+    renderDiscussions();
+  </script>
+
   </div>
 
   <!-- Footer -->
