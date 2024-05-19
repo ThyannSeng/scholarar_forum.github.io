@@ -288,12 +288,12 @@
       <h2 class="text-2xl font-semibold mb-4">Forum Categories</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Category Card -->
-        <div class="bg-gray-100 p-4 rounded border hover:shadow-md transition-shadow">
+        <!-- <div class="bg-gray-100 p-4 rounded border hover:shadow-md transition-shadow">
           <h3 class="text-lg font-semibold mb-2">Scholarship Applications</h3>
           <p class="text-gray-600">Discuss tips and experiences about scholarship applications.</p>
           <a href="category.html?category=Scholarship Applications" class="text-blue-600 hover:underline mt-2 inline-block">View Discussions</a>
         </div>
-        <!-- <div class="bg-gray-100 p-4 rounded border hover:shadow-md transition-shadow">
+        <div class="bg-gray-100 p-4 rounded border hover:shadow-md transition-shadow">
           <h3 class="text-lg font-semibold mb-2">Study Tips</h3>
           <p class="text-gray-600">Share and discover effective study strategies.</p>
           <a href="category.html?category=Study Tips" class="text-blue-600 hover:underline mt-2 inline-block">View Discussions</a>
@@ -302,16 +302,39 @@
           <h3 class="text-lg font-semibold mb-2">Career Advice</h3>
           <p class="text-gray-600">Get advice and share insights about career planning.</p>
           <a href="category.html?category=Career Advice" class="text-blue-600 hover:underline mt-2 inline-block">View Discussions</a>
-        </div> -->
+        </div>
         <div class="bg-gray-100 p-4 rounded border hover:shadow-md transition-shadow">
           <h3 class="text-lg font-semibold mb-2">Country-Specific Discussions</h3>
           <p class="text-gray-600">Connect with students and discuss country-specific topics.</p>
           <a href="category.html?category=Country-Specific Discussions" class="text-blue-600 hover:underline mt-2 inline-block">View Discussions</a>
-        </div>
+        </div> -->
       </div>
     </div>
 
   </div>
+
+<script>
+  const categories = [
+  { name: "Scholarship Applications", description: "Discuss tips and experiences about scholarship applications." },
+  { name: "Study Tips", description: "Share and discover effective study strategies." },
+  { name: "Career Advice", description: "Get advice and share insights about career planning." },
+  { name: "Country-Specific Discussions", description: "Connect with students and discuss country-specific topics." },
+  // Add more categories as needed
+];
+
+function renderCategories() {
+  const categoryContainer = document.querySelector('.grid');
+  categoryContainer.innerHTML = categories.map(category => `
+    <div class="bg-gray-100 p-4 rounded border hover:shadow-md transition-shadow">
+      <h3 class="text-lg font-semibold mb-2">${category.name}</h3>
+      <p class="text-gray-600">${category.description}</p>
+      <a href="category.html?category=${encodeURIComponent(category.name)}" class="text-blue-600 hover:underline mt-2 inline-block">View Discussions</a>
+    </div>
+  `).join('');
+}
+
+renderCategories();
+</script>
 
   <!-- Recent Discussions -->
   <div class="container mx-auto mt-8 space-y-10 px-72">
@@ -348,36 +371,37 @@
   <script>
     // Example data
     const discussions = [
-      { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "GKS Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+    { id: 1, title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+  { id: 2, title: "GKS Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+  { id: 3, title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+  { id: 4, title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+  // Add more discussion data as needed
+      // Add more discussion data as needed
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
       // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
       // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
       // Add more discussion data as needed
-      { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      // Add more discussion data as needed
 
-      { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
       // Add more discussion data as needed
-      { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
       // Add more discussion data as needed
-      { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
       // Add more discussion data as needed
-      { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Thailand Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      // { title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
       // Add more discussion data as needed
 
       // ...
@@ -395,39 +419,39 @@
 
   // Function to render discussions
   function renderDiscussions() {
-    // Calculate the start and end index of discussions for the current page
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentDiscussions = filteredDiscussions.slice(startIndex, endIndex);
+  // Calculate the start and end index of discussions for the current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentDiscussions = filteredDiscussions.slice(startIndex, endIndex);
 
-    // Render discussions
-    discussionsContainer.innerHTML = currentDiscussions.map(discussion => `
-      <div class="py-4 border-b border-zinc-200 flex items-center justify-between">
-        <div class="flex items-center">
-          <div class="p-3 bg-blue-500 text-white rounded-full mr-4">
-            <i class="fas fa-book"></i>
-          </div>
-          <div>
-            <h2 class="font-semibold">${discussion.title}</h2>
-            <p class="text-zinc-700">${discussion.description}</p>
-            <span class="text-blue-500 hover:text-blue-600 cursor-pointer">Sub-forums</span>
-          </div>
+  // Render discussions
+  discussionsContainer.innerHTML = currentDiscussions.map(discussion => `
+    <div class="py-4 border-b border-zinc-200 flex items-center justify-between">
+      <div class="flex items-center">
+        <div class="p-3 bg-blue-500 text-white rounded-full mr-4">
+          <i class="fas fa-book"></i>
         </div>
-        <div class="flex items-center">
-          <span class="bg-green-200 text-green-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded">New</span>
-          <p class="text-zinc-500">${discussion.threads}</p>
-          <p class="ml-4 text-zinc-500">${discussion.messages}</p>
+        <div>
+          <h2 class="font-semibold">${discussion.title}</h2>
+          <p class="text-zinc-700">${discussion.description}</p>
+          <a href="discussion.html?id=${discussion.id}" class="text-blue-500 hover:text-blue-600 cursor-pointer">Sub-forums</a>
         </div>
       </div>
-    `).join('');
+      <div class="flex items-center">
+        <span class="bg-green-200 text-green-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded">New</span>
+        <p class="text-zinc-500">${discussion.threads}</p>
+        <p class="ml-4 text-zinc-500">${discussion.messages}</p>
+      </div>
+    </div>
+  `).join('');
 
-    // Update button states
-    prevBtn.disabled = currentPage === 1;
-    nextBtn.disabled = currentPage === Math.ceil(filteredDiscussions.length / itemsPerPage);
+  // Update button states
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === Math.ceil(filteredDiscussions.length / itemsPerPage);
 
-    // Render page numbers
-    renderPageNumbers();
-  }
+  // Render page numbers
+  renderPageNumbers();
+}
 
   // Function to render page numbers
   function renderPageNumbers() {
