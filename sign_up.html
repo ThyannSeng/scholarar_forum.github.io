@@ -65,7 +65,8 @@
     }
 
     .signup-form {
-        width: 300px;
+        width: 100%;
+        max-width: 600px;
     }
 
     .logo {
@@ -75,27 +76,41 @@
     }
 
     .logo img {
-        max-width: 100%;
+        max-width: 200px; /* Set the desired max width */
         height: auto;
     }
 
+    .input-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+    }
+
+    .input-group > div {
+        display: flex;
+        flex-direction: column;
+    }
 
     input[type="text"], input[type="email"], input[type="password"], input[type="date"] {
         width: 100%;
         padding: 10px;
-        margin: 10px 0;
+        margin: 5px 0;
         border: 1px solid #ccc;
         border-radius: 5px;
+        box-sizing: border-box; /* Ensure padding is included in the width */
     }
 
     .signup-form button {
         width: 100%;
+        max-width: 200px; /* Set a max width for the button */
         padding: 10px;
         background-color: #5c67f2;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        margin: 20px auto; /* Center the button */
+        display: block; /* Ensure it behaves like a block element */
     }
 
     .login {
@@ -104,30 +119,47 @@
     }
 
     fieldset {
-    width: 106%; /* Full width to match other inputs */
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Includes padding and border in the width calculation */
-}
+        width: 100%; /* Full width to match other inputs */
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box; /* Includes padding and border in the width calculation */
+    }
 
-legend {
-    padding: 0 10px;
-    font-size: 16px;
-    color: #333;
-}
+    .fieldset-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap; /* Wrap fieldsets on smaller screens */
+    }
 
-label {
-    margin-right: 20px;
-    font-size: 14px;
-    color: #555;
-}
+    .fieldset-group fieldset {
+        flex: 1; /* Ensure fieldsets take equal width */
+        min-width: 200px; /* Minimum width to keep them readable */
+    }
 
-input[type="radio"] {
-    margin-right: 5px;
-    cursor: pointer;
-}
+    legend {
+        padding: 0 10px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    label {
+        margin-right: 20px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    input[type="radio"] {
+        margin-right: 5px;
+        cursor: pointer;
+    }
+
+    .privacy-agreement, .email-updates {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
 
     @media (max-width: 768px) {
         .container {
@@ -137,6 +169,22 @@ input[type="radio"] {
         .left, .right {
             flex: none;
             width: 100%;
+        }
+
+        .input-group {
+            grid-template-columns: 1fr;
+        }
+
+        .fieldset-group {
+            flex-direction: column;
+        }
+
+        fieldset {
+            width: 100%;
+        }
+
+        .signup-form button {
+            max-width: 100%; /* Full width on smaller screens */
         }
     }
 </style>
@@ -157,32 +205,55 @@ input[type="radio"] {
                     <img src="image/logo_signup.png" alt="Login Icon" />
                 </div>
                 <h2>Sign Up</h2>
-                <fieldset>
-                    <legend>I am:</legend>
-                    <label for="student"><input type="radio" name="role" id="student" value="student"> A Student</label>
-                    <label for="parent"><input type="radio" name="role" id="parent" value="parent"> A Parent/Guardian</label>
-                </fieldset>
-                <br>
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Choose a username">
-
-                <label for="dob">Date of Birth</label>
-                <input type="date" id="dob">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Enter your email">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Create a password">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" placeholder="Confirm your password">
-
-
+                <div class="fieldset-group">
+                    <fieldset>
+                        <legend>I am:</legend>
+                        <label for="student"><input type="radio" name="role" id="student" value="student" required> A Student</label>
+                        <label for="parent"><input type="radio" name="role" id="parent" value="parent" required> A Parent/Guardian</label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Gender:</legend>
+                        <label for="male"><input type="radio" name="gender" id="male" value="male" required> Male</label>
+                        <label for="female"><input type="radio" name="gender" id="female" value="female" required> Female</label>
+                        <label for="other"><input type="radio" name="gender" id="other" value="other" required> Other</label>
+                    </fieldset>
+                </div>
+                <div class="input-group">
+                    <div>
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Choose a username" required>
+                    </div>
+                    <div>
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" required>
+                    </div>
+                    <div>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Create a password" required>
+                    </div>
+                    <div>
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+                <div class="email-updates">
+                    <input type="checkbox" id="email-updates" name="email-updates">
+                    <label for="email-updates"> I want to receive emails about scholarships, updates, and offers</label>
+                </div>
+                <div class="privacy-agreement">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy"> I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a></label>
+                </div>
                 <button type="submit">Sign Up</button>
                 <div class="login">
                     Already have an account? <a href="login.html">Log in</a>
                 </div>
             </div>
         </div>
-        
-    </li>
+    </div>
 </body>
 </html>

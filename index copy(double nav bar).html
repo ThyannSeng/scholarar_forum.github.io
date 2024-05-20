@@ -72,58 +72,146 @@
   </style>
 </head>
 <body class="font-['Noto Sans Khmer']">
-  <header class="bg-white shadow-md">
+	<header class="bg-white shadow-md">
     <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-20">
         <div class="flex items-center">
             <a href="index.html">
                 <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap." style="width: 55px;">
             </a>
-            <h1 class="text-2xl font-bold text-primary">SCHOLARAR</h1>
-
-            <div class="flex space-x-12">
-          
-
-              <a href="#" class="text-zinc-700 hover:text-zinc-900">Scholarship</a>
-              <a href="forum.html" class="text-gray-700 hover:text-primary">Forum</a>
-              <!-- <a href="https://www.universityrankings.ch/" class="text-zinc-700 hover:text-zinc-900">University Ranking</a> -->
-    
-          </div>
-
         </div>
-        
-        <!-- <div class="flex items-center justify-center flex-grow">
-            
-        </div> -->
+      <div class="flex items-center justify-center flex-grow"> <!-- New container for Scholarar -->
+          <h1 class="text-2xl font-bold text-primary">SCHOLARAR</h1> <!-- Scholarar text -->
+      </div>
+      <div class="flex items-center">
+          <div class="flex items-center space-x-4">
 
-        <div class="flex items-center">
-            <div class="flex items-center space-x-4">
-                <button class="p-2">🔍</button>
+              <!-- <div class="relative">
+                <button class="p-2">🌐</button>
+                <div class="dropdown-menu absolute hidden bg-white rounded-md shadow-md">
+                    <a href="#" class="block p-2 hover:bg-gray-200">English</a>
+                    <a href="#" class="block p-2 hover:bg-gray-200">French</a>
+                    <a href="#" class="block p-2 hover:bg-gray-200">Spanish</a>
+                </div>
+            </div> -->
+            <button class="p-2">🔍</button>
                 <a href="scholarship_upload.html" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fas fa-upload"></i></a>
                 <a href="https://web.facebook.com/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-facebook"></i></a>
                 <a href="https://t.me/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-telegram"></i></a>
                 <a href="https://www.tiktok.com/@scholararkh" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-tiktok"></i></a>
-                <a href="http://www.Scholarar.com" class="text-gray-700 hover:text-primary">About Us</a>
-                
-                <!-- <button class="p-2">📞</button> -->
-            </div>
-            <a href="login.html" class="block bg-zinc-200 p-2 rounded text-center text-gray-800 font-semibold hover:bg-zinc-300 transition duration-300">Login</a>
-        </div>
-    </div>
-   
-</header>
+              <button class="p-2">📞</button>
+          </div>
+          <!-- <button class="p-2">☰</button> -->
+          <a href="login.html" class="block bg-zinc-200 p-2 rounded text-center text-gray-800 font-semibold hover:bg-zinc-300 transition duration-300">Login</a>
+      </div>
+  </div>
+		<!-- <nav class="bg-gray-100">
+		  <div class="container mx-auto flex justify-between items-center py-4 px-5 lg:px-20">
+			<div class="flex items-center space-x-4">
+			  <a href="#" class="text-gray-700 hover:text-primary">Scholarship</a>
+			  <a href="#" class="text-gray-700 hover:text-primary">Countries</a>
+			  <a href="#" class="text-gray-700 hover:text-primary">Major</a>
+			</div>
+			<div class="flex items-center space-x-4">
+			  <input type="text" placeholder="Search..." class="bg-white border border-gray-300 rounded-md px-4 py-2">
+			  <button class="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-md"><i class="fas fa-search"></i></button>
+			</div>
+		  </div>
+		</nav> -->
+	  </header>
 
+	  <div class="bg-white shadow-md ">
+      <div class="bg-gray-200">
+		<div class="max-w-7xl mx-auto px-4 bg-gray-200">
+		  <div class="flex justify-between items-center ">
+			<!-- <div class="flex items-center space-x-4">
+			  <img src="image/logo.jpg" alt="Logo" class="h-10" crossorigin="anonymous">
+			  <span class="text font-bold">Scholarar</span>
+			</div>
+			<div class="flex space-x-4">
+			  <button class="bg-zinc-200 p-2 rounded">Login</button>
+			  <div class="space-x-1">
+				<button class="p-2">🔍</button>
+				<button class="p-2">🌐</button>
+				<button class="p-2">📞</button>
+			  </div>
+			  <button class="p-2">☰</button>
+			</div> -->
+		  </div>
+      <div class="flex justify-between items-center py-2 border-t ">
+        <div class="flex">
+            <div class="relative">
+              <select id="scholarship-select"  class="text-zinc-700 bg-gray-100 border border-gray-400 p-1 focus:outline-none focus:border-primary select-centered" data-placeholder="Scholarships" onchange="redirectToLink()">
+                <option value="" hidden disabled selected></option>
+                  <option value="MEXT_scholarship_details.html">MEXT Scholarship</option>
+                  <option value="scholarship_details.html">GKS Scholarship</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-1 pointer-events-none">
+                  <!-- <svg class="h-4 w-4 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5 7l5 5 5-5z"/></svg> -->
+              </div>
+          </div>
+          <div class="relative">
+            <select class="text-zinc-700 bg-gray-100 border border-gray-400 p-1 focus:outline-none focus:border-primary select-centered" data-placeholder="Countries" onchange="redirectToLink()">
+              <option value="" hidden disabled selected></option>
+                <option value="scholarship_details.html">China</option>
+                <option value="scholarship_details.html">Japan</option>
+                <option value="scholarship_details.html">Thailand</option>
+            </select>
+            <div class="absolute inset-y-0 right-0 flex items-center px-1 pointer-events-none">
+                <!-- <svg class="h-4 w-4 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5 7l5 5 5-5z"/></svg> -->
+            </div>
+        </div>
+          <div class="relative">
+              <select class="text-zinc-700 bg-gray-100 border border-gray-400 p-1 focus:outline-none focus:border-primary select-centered" data-placeholder="Majors" onchange="redirectToLink()">
+                <option value="" hidden disabled selected></option>
+                <option value="scholarship_details.html">Information Systems</option>
+                <option value="scholarship_details.html">Management</option>
+                <option value="scholarship_details.html">Nurse</option>
+                <option value="scholarship_details.html">Interior Design</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-1 pointer-events-none">
+                  <!-- <svg class="h-4 w-4 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5 7l5 5 5-5z"/></svg> -->
+              </div>
+          </div>
+      </div>
       
 
 
 
 
-
+        <div class="flex space-x-4">
+          
+            <a href="http://www.Scholarar.com" class="text-gray-700 hover:text-primary">About Us</a>
+            <a href="forum.html" class="text-gray-700 hover:text-primary">Forum</a>
+            <a href="https://www.universityrankings.ch/" class="text-zinc-700 hover:text-zinc-900">University Ranking</a>
+            <a href="#" class="text-zinc-700 hover:text-zinc-900">Creator mode</a>
+        </div>
     </div>
 		</div>
 	  </div>
   </div>
   <main class="container mx-auto py-8 px-5 lg:px-20">
-   
+    <section class="grid grid-cols-8 justify-between">
+      <div class="button-container col-span-2">
+          <button class="button text-primary font-semibold hover:text-primary-dark ">
+              Scholarship
+          </button>
+      </div>
+      <div class="button-container col-span-2">
+          <button class="button text-primary font-semibold hover:text-primary-dark ">
+              Online-Class
+          </button>
+      </div>
+      <div class="button-container col-span-2">
+          <button class="button text-primary font-semibold hover:text-primary-dark ">
+              Events
+          </button>
+      </div>
+      <div class="button-container col-span-2">
+          <button class="button text-primary font-semibold hover:text-primary-dark ">
+              Government Docs
+          </button>
+      </div>
+  </section>
 
 
   <!-- <div class="bg-white rounded-2xl shadow-lg p-8 max-w-sm">
@@ -170,7 +258,7 @@
         
         
       </div>
-            <!-- <div class="bg-white rounded-md shadow-md">
+            <div class="bg-white rounded-md shadow-md">
         <img src="https://www.ancodeai.com/placeholder.svg" alt="A photo of a group of students sitting in a classroom.">
         <div class="p-4">
           <h3 class="text font-bold text-primary mb-2">អានបទពិសោធការណ៍រៀនសូត្រនៅបរទេសរបស់អ្នកសិក្សាកម្ពុជា</h3>
@@ -202,10 +290,10 @@
         </div>
         
         
-      </div> -->
+      </div>
       
       
-            <!-- <div class="bg-white rounded-md shadow-md">
+            <div class="bg-white rounded-md shadow-md">
         <img src="https://www.ancodeai.com/placeholder.svg" alt="A photo of a group of students sitting in a classroom.">
         <div class="p-4">
           <h3 class="text font-bold text-primary mb-2">អានបទពិសោធការណ៍រៀនសូត្រនៅបរទេសរបស់អ្នកសិក្សាកម្ពុជា</h3>
@@ -221,7 +309,7 @@
           <h3 class="text font-bold text-primary mb-2">អានបទពិសោធការណ៍រៀនសូត្រនៅបរទេសរបស់អ្នកសិក្សាកម្ពុជា</h3>
           <p class="text-gray-700 mb-4">ស្វែងរកបទពិសោធការណ៍រៀនសូត្រនៅបរទេសរបស់អ្នកសិក្សាកម្ពុជាដែលបានទៅសិក្សានៅប្រទេសជប៉ុន កូរ៉េ អាមេរិក អង់គ្លេស បារាំង ចិន ជាដើម។</p>
           <a href="#" class="text-primary hover:underline">អានបន្ថែម</a>
-        </div> -->
+        </div>
         
         
       </div>
