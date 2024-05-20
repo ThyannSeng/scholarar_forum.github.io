@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholarship Subforum</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .content-wrapper {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+    }
+    .sidebar {
+      background-color: #f9fafb;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .sidebar h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .sidebar a {
+      display: block;
+      color: #374151;
+      padding: 10px 0;
+      text-decoration: none;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .sidebar a:hover {
+      color: #0d6efd;
+    }
+    .main-content {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .main-content h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #374151;
+    }
+    .main-content p {
+      color: #555;
+    }
+    .question-list h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .question-item {
+      background-color: #f9fafb;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .question-item h3 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #374151;
+    }
+    .question-item p {
+      color: #555;
+      margin: 5px 0;
+    }
+    .question-item a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    .question-item a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-20">
+      <div class="flex items-center">
+        <a href="index.html">
+          <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap." style="width: 55px;">
+        </a>
+      </div>
+      <div class="flex items-center justify-center flex-grow">
+        <h1 class="text-2xl font-bold text-primary">SCHOLARAR</h1>
+      </div>
+      <div class="flex items-center">
+        <div class="flex items-center space-x-4">
+          <button class="p-2">🔍</button>
+          <a href="https://web.facebook.com/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-facebook"></i></a>
+          <a href="https://t.me/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-telegram"></i></a>
+          <a href="https://www.tiktok.com/@scholararkh" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-tiktok"></i></a>
+          <button class="p-2">📞</button>
+        </div>
+        <a href="login.html" class="block bg-zinc-200 p-2 rounded text-center text-gray-800 font-semibold hover:bg-zinc-300 transition duration-300">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mx-auto p-5 flex">
+    <aside class="sidebar w-1/4 mr-5">
+      <h2>Navigation</h2>
+      <a href="forum.html">Forum Home</a>
+      <a href="scholarships.html">Scholarships</a>
+      <a href="category.html?category=Scholarship Applications">Scholarship Applications</a>
+      <a href="category.html?category=Study Tips">Study Tips</a>
+    </aside>
+
+    <div class="main-content w-3/4">
+      <h1 id="subforum-title" class="text-3xl font-bold text-gray-800 mb-2">Scholarship Questions</h1>
+      <p id="subforum-description" class="text-gray-600 mb-4">Browse questions related to the selected scholarship and join the discussion.</p>
+
+      <div class="flex items-center justify-between border-b border-zinc-200 pb-4 mb-4">
+        <h2 class="text-lg md:text-xl font-semibold">Questions</h2>
+        <div class="flex">
+          <div class="relative">
+            <input id="search-input" type="text" placeholder="Quick search..." class="pl-4 pr-10 py-2 w-full md:w-64 bg-white text-zinc-700 placeholder-zinc-500 rounded-full border border-blue-700 focus:outline-none focus:border-blue-500" />
+          </div>
+        </div>
+      </div>
+      <div id="question-list" class="question-list">
+        <!-- Questions will be dynamically inserted here -->
+      </div>
+
+      <!-- Pagination Controls -->
+      <div class="flex justify-center mt-6">
+        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+          <button id="prev-btn" class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
+            Previous
+          </button>
+          <div id="pagination-numbers" class="flex space-x-1">
+            <!-- Page numbers will be dynamically inserted here -->
+          </div>
+          <button id="next-btn" class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
+            Next
+          </button>
+        </nav>
+      </div>
+
+      <div class="related-scholarships bg-white p-6 rounded-lg shadow-lg mt-4">
+        <h2>Related Scholarships</h2>
+        <a href="subforum.html?id=2&subforumName=GKS%20Scholarship%202025">GKS Scholarship 2025</a>
+        <!-- Add more related scholarships as needed -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Example data (replace this with actual data fetching logic)
+    const scholarships = [
+      {
+        id: 1,
+        title: "MEXT Scholarship 2025",
+        description: "Introduction or brief description about the scholarship, its importance, and impact.",
+        questions: [
+          {
+            id: 101,
+            title: "Does MEXT Scholarship cover living expenses?",
+            description: "I want to know if the MEXT Scholarship provides any allowances for living expenses.",
+          },
+          {
+            id: 102,
+            title: "What are the eligibility criteria for MEXT Scholarship?",
+            description: "Can someone explain the eligibility requirements for applying to the MEXT Scholarship?",
+          }
+          // Add more questions as needed
+        ]
+      },
+      {
+        id: 2,
+        title: "GKS Scholarship 2025",
+        description: "Introduction or brief description about the scholarship, its importance, and impact.",
+        questions: [
+          {
+            id: 201,
+            title: "How to apply for GKS Scholarship?",
+            description: "Can anyone provide a step-by-step guide on applying for the GKS Scholarship?",
+          }
+          // Add more questions as needed
+        ]
+      }
+      // Add more scholarships as needed
+    ];
+
+    const itemsPerPage = 2; // Adjust items per page as needed
+    let currentPage = 1;
+    let filteredQuestions = [];
+    let currentScholarshipQuestions = [];
+
+    const questionList = document.getElementById('question-list');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const paginationNumbers = document.getElementById('pagination-numbers');
+    const searchInput = document.getElementById('search-input');
+
+    // Extract query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const scholarshipId = urlParams.get('id');
+    const subforumName = urlParams.get('subforumName');
+
+    // Find the scholarship by ID
+    const scholarship = scholarships.find(s => s.id === parseInt(scholarshipId));
+
+    // Populate the page with scholarship details and questions
+    if (scholarship) {
+      document.getElementById('subforum-title').textContent = scholarship.title;
+      document.getElementById('subforum-description').textContent = scholarship.description;
+      currentScholarshipQuestions = scholarship.questions;
+      filterQuestions();
+    } else {
+      document.getElementById('subforum-title').textContent = 'Scholarship not found';
+    }
+
+    function filterQuestions() {
+      const searchTerm = searchInput.value.toLowerCase();
+      filteredQuestions = currentScholarshipQuestions.filter(question =>
+        question.title.toLowerCase().includes(searchTerm) ||
+        question.description.toLowerCase().includes(searchTerm)
+      );
+      currentPage = 1; // Reset to the first page
+      renderQuestions();
+    }
+
+    function renderQuestions() {
+      // Calculate the start and end index of questions for the current page
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentQuestions = filteredQuestions.slice(startIndex, endIndex);
+
+      // Render questions
+      questionList.innerHTML = currentQuestions.map(question => `
+        <div class="question-item">
+          <h3>${question.title}</h3>
+          <p>${question.description}</p>
+          <a href="subsubforum.html?scholarshipId=${scholarship.id}&questionId=${question.id}&subforumName=${encodeURIComponent(subforumName)}">View Discussion</a>
+        </div>
+      `).join('');
+
+      // Update button states
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === Math.ceil(filteredQuestions.length / itemsPerPage);
+
+      // Render page numbers
+      renderPageNumbers();
+    }
+
+    function renderPageNumbers() {
+      const totalPages = Math.ceil(filteredQuestions.length / itemsPerPage);
+      paginationNumbers.innerHTML = '';
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.innerText = i;
+        pageButton.classList.add('relative', 'inline-flex', 'items-center', 'px-4', 'py-2', 'border', 'text-sm', 'font-medium');
+
+        if (i === currentPage) {
+          pageButton.classList.add('z-10', 'bg-blue-50', 'border-blue-500', 'text-blue-600');
+        } else {
+          pageButton.classList.add('bg-white', 'border-zinc-300', 'text-zinc-500', 'hover:bg-zinc-50');
+        }
+
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          renderQuestions();
+        });
+
+        paginationNumbers.appendChild(pageButton);
+      }
+    }
+
+    // Add event listeners to pagination buttons
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderQuestions();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < Math.ceil(filteredQuestions.length / itemsPerPage)) {
+        currentPage++;
+        renderQuestions();
+      }
+    });
+
+    // Add event listener to search input
+    searchInput.addEventListener('input', filterQuestions);
+
+    // Initial render
+    filterQuestions();
+  </script>
+</body>
+</html>

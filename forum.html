@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <title>Forum</title>
+  <title>Scholarar Forum</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -14,7 +13,6 @@
     }
   </style>
 </head>
-
 <body class="bg-gray-50">
 
   <!-- Navigation Bar -->
@@ -48,8 +46,6 @@
     const categories = [
       { name: "Scholarship Applications", description: "Discuss tips and experiences about scholarship applications." },
       { name: "Study Tips", description: "Share and discover effective study strategies." },
-      // { name: "Career Advice", description: "Get advice and share insights about career planning." },
-      // { name: "Country-Specific Discussions", description: "Connect with students and discuss country-specific topics." },
       // Add more categories as needed
     ];
 
@@ -59,7 +55,7 @@
         <div class="bg-gray-100 p-3 md:p-4 rounded border hover:shadow-md transition-shadow">
           <h3 class="text-lg font-semibold mb-1">${category.name}</h3>
           <p class="text-gray-600 text-sm">${category.description}</p>
-          <a href="category.html?category=${encodeURIComponent(category.name)}" class="text-blue-600 text-sm hover:underline mt-1 inline-block">View Discussions</a>
+          <a href="subforum.html?category=${encodeURIComponent(category.name)}" class="text-blue-600 text-sm hover:underline mt-1 inline-block">View Discussions</a>
         </div>
       `).join('');
     }
@@ -103,9 +99,7 @@
     // Example data
     const discussions = [
       { id: 1, title: "MEXT Scholarship", description: "An exclusive MEXT Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      { id: 2, title: "GKS Scholarship", description: "An exclusive Thailand Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      // { id: 3, title: "CP Scholarship", description: "An exclusive CP Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
-      // { id: 4, title: "Chinese Scholarship", description: "An exclusive Chinese Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
+      { id: 2, title: "GKS Scholarship", description: "An exclusive GKS Scholarship", threads: "7.8K Threads", messages: "1.1M Messages" },
       // Add more discussion data as needed
     ];
 
@@ -136,7 +130,7 @@
             <div>
               <h2 class="font-semibold">${discussion.title}</h2>
               <p class="text-zinc-700 text-sm">${discussion.description}</p>
-              <a href="discussion.html?id=${discussion.id}" class="text-blue-500 text-sm hover:text-blue-600 cursor-pointer">Sub-forums</a>
+              <a href="subforum.html?id=${discussion.id}" class="text-blue-500 text-sm hover:text-blue-600 cursor-pointer">Sub-forums</a>
             </div>
           </div>
           <div class="flex items-center">
@@ -221,5 +215,4 @@
   </footer>
 
 </body>
-
 </html>

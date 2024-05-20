@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholarship Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .content-wrapper {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+    }
+    .slide-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mySlides {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .mySlides img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    .shadow-mask {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+      pointer-events: none;
+    }
+    .shadow-mask.left {
+      left: 0;
+      transform: rotateY(180deg);
+    }
+    .shadow-mask.right {
+      right: 0;
+    }
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+    @keyframes fade {
+      from { opacity: .4 }
+      to { opacity: 1 }
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-20">
+      <div class="flex items-center">
+        <a href="index.html">
+          <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap." style="width: 55px;">
+        </a>
+      </div>
+      <div class="flex items-center justify-center flex-grow">
+        <h1 class="text-2xl font-bold text-primary">SCHOLARAR</h1>
+      </div>
+      <div class="flex items-center">
+        <div class="flex items-center space-x-4">
+          <button class="p-2">🔍</button>
+          <a href="https://web.facebook.com/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-facebook"></i></a>
+          <a href="https://t.me/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-telegram"></i></a>
+          <a href="https://www.tiktok.com/@scholararkh" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-tiktok"></i></a>
+          <button class="p-2">📞</button>
+        </div>
+        <a href="login.html" class="block bg-zinc-200 p-2 rounded text-center text-gray-800 font-semibold hover:bg-zinc-300 transition duration-300">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mx-auto p-5">
+    <!-- Slideshow container -->
+    <div class="slide-container">
+      <!-- Shadows -->
+      <div class="shadow-mask left"></div>
+      <div class="shadow-mask right"></div>
+
+      <!-- Full-width images -->
+      <div class="mySlides fade">
+        <img id="slide-img-1" src="" alt="Scholarship Photo 1">
+      </div>
+      <div class="mySlides fade">
+        <img id="slide-img-2" src="" alt="Scholarship Photo 2">
+      </div>
+      <div class="mySlides fade">
+        <img id="slide-img-3" src="" alt="Scholarship Photo 3">
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- Scholarship Information -->
+      <div class="mt-8">
+        <h1 id="scholarship-title" class="text-3xl font-bold text-gray-800 mb-2"></h1>
+        <p id="scholarship-description" class="text-gray-600"></p>
+        <div class="mt-4 bg-white p-6 rounded-lg shadow-lg">
+          <h2 class="text-2xl font-bold text-gray-700">Application Deadline</h2>
+          <p id="scholarship-deadline" class="text-gray-600"></p>
+          <h2 class="text-2xl font-bold text-gray-700 mt-4">Eligibility Criteria</h2>
+          <p id="scholarship-eligibility" class="text-gray-600"></p>
+          <h2 class="text-2xl font-bold text-gray-700 mt-4">Scholarship Benefits</h2>
+          <p id="scholarship-benefits" class="text-gray-600"></p>
+          <h2 class="text-2xl font-bold text-gray-700 mt-4">How to Apply</h2>
+          <p id="scholarship-apply" class="text-gray-600"></p>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-zinc-700">Comments</h2>
+        <div class="mt-4">
+          <textarea id="commentBox" class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="4" placeholder="Write a comment..."></textarea>
+          <button onclick="postComment()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Post Comment</button>
+        </div>
+        <div id="commentList" class="mt-4"></div>
+      </div>
+
+      <div class="main-content-body">
+        <ul class="question-list">
+          <li class="question-item">
+            <div class="question-item-header">
+              <h2 class="question-item-header-title">What is the best way to learn programming?</h2>
+              <div class="question-item-header-meta">
+                <span class="question-item-header-meta-item">Asked by John Doe</span>
+                <span class="question-item-header-meta-item">1 hour ago</span>
+              </div>
+            </div>
+            <div class="question-item-body">
+              <p>I'm a complete beginner and I want to learn how to program. What is the best way to get started? Should I take a course, read books, or just start coding? Any advice would be appreciated.</p>
+            </div>
+            <div class="question-item-footer">
+              <a href="#" class="question-item-footer-button">Answer</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="mt-8 bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-gray-700">Contact Information</h2>
+        <p class="text-gray-600">Provide contact details for further inquiries.</p>
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-8 p-6 bg-gray-800 text-white text-center rounded-lg shadow-lg">
+        <p>Connect with us on:</p>
+        <a href="#" class="text-blue-400 hover:text-blue-600">Facebook</a> | 
+        <a href="#" class="text-blue-400 hover:text-blue-600">Twitter</a> |
+        <a href="#" class="text-blue-400 hover:text-blue-600">LinkedIn</a>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const scholarships = [
+      {
+        id: 1,
+        title: "MEXT Scholarship 2025",
+        description: "Introduction or brief description about the scholarship, its importance, and impact.",
+        deadline: "Specify the deadline for application submission.",
+        eligibility: "Details about who can apply for this scholarship.",
+        benefits: "Information on what the scholarship covers.",
+        apply: "Information on how to apply.",
+        slides: [
+          "image/MEXT scholarship/1.png",
+          "image/MEXT scholarship/2.png",
+          "image/MEXT scholarship/3.png"
+        ]
+      },
+      {
+        id: 2,
+        title: "GKS Scholarship 2025",
+        description: "Introduction or brief description about the scholarship, its importance, and impact.",
+        deadline: "Specify the deadline for application submission.",
+        eligibility: "Details about who can apply for this scholarship.",
+        benefits: "Information on what the scholarship covers.",
+        apply: "Information on how to apply.",
+        slides: [
+          "image/GKS scholarship/1.png",
+          "image/GKS scholarship/2.png",
+          "image/GKS scholarship/3.png"
+        ]
+      }
+      // Add more scholarships as needed
+    ];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const scholarshipId = parseInt(urlParams.get('id'));
+
+    const scholarship = scholarships.find(s => s.id === scholarshipId);
+
+    if (scholarship) {
+      document.getElementById('scholarship-title').textContent = scholarship.title;
+      document.getElementById('scholarship-description').textContent = scholarship.description;
+      document.getElementById('scholarship-deadline').textContent = scholarship.deadline;
+      document.getElementById('scholarship-eligibility').textContent = scholarship.eligibility;
+      document.getElementById('scholarship-benefits').textContent = scholarship.benefits;
+      document.getElementById('scholarship-apply').textContent = scholarship.apply;
+      document.getElementById('slide-img-1').src = scholarship.slides[0];
+      document.getElementById('slide-img-2').src = scholarship.slides[1];
+      document.getElementById('slide-img-3').src = scholarship.slides[2];
+    }
+
+    function postComment() {
+      const commentBox = document.getElementById('commentBox');
+      const commentList = document.getElementById('commentList');
+      const newComment = document.createElement('div');
+      newComment.className = 'bg-zinc-200 p-2 my-2 rounded-lg';
+      newComment.textContent = commentBox.value;
+      commentList.appendChild(newComment);
+      commentBox.value = ''; // Clear the textarea after posting
+    }
+
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholarship Discussion</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .content-wrapper {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+    }
+    .sidebar {
+      background-color: #f9fafb;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .sidebar h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .sidebar a {
+      display: block;
+      color: #374151;
+      padding: 10px 0;
+      text-decoration: none;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .sidebar a:hover {
+      color: #0d6efd;
+    }
+    .main-content {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .breadcrumb {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #6b7280;
+    }
+    .breadcrumb a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+    .breadcrumb span {
+      margin: 0 5px;
+    }
+    .main-content h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 20px;
+    }
+    .main-content p {
+      color: #555;
+    }
+    .question-details {
+      margin-bottom: 20px;
+    }
+    .question-details h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2d3748;
+    }
+    .question-details p {
+      font-size: 16px;
+      color: #4a5568;
+      margin-top: 5px;
+    }
+    .question-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .question-header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .question-header div {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2d3748;
+    }
+    .comments-section h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .comment-box {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    .comment-box textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #e5e7eb;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .comment-box button {
+      align-self: flex-end;
+      background-color: #0d6efd;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .comment-box button:hover {
+      background-color: #0b5ed7;
+    }
+    .comment {
+      background-color: #f9fafb;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .comment p {
+      color: #374151;
+    }
+    .comment .comment-footer {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .comment .comment-footer button {
+      background-color: transparent;
+      color: #0d6efd;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+    .comment .comment-footer button:hover {
+      text-decoration: underline;
+    }
+    .comment .comment-footer button .fa-thumbs-up {
+      margin-right: 5px;
+    }
+    .comment .user-name {
+      font-weight: 600;
+      margin-right: 10px;
+    }
+    .reply-section {
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+    .reply-box {
+      display: none;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+    .reply-box textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #e5e7eb;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .reply-box button {
+      align-self: flex-end;
+      background-color: #0d6efd;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .reply-box button:hover {
+      background-color: #0b5ed7;
+    }
+    .reply {
+      background-color: #e2e8f0;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .reply .user-name {
+      font-weight: 600;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-20">
+      <div class="flex items-center">
+        <a href="index.html">
+          <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap." style="width: 55px;">
+        </a>
+      </div>
+      <div class="flex items-center justify-center flex-grow">
+        <h1 class="text-2xl font-bold text-primary">SCHOLARAR</h1>
+      </div>
+      <div class="flex items-center">
+        <div class="flex items-center space-x-4">
+          <button class="p-2">🔍</button>
+          <a href="https://web.facebook.com/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-facebook"></i></a>
+          <a href="https://t.me/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-telegram"></i></a>
+          <a href="https://www.tiktok.com/@scholararkh" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-tiktok"></i></a>
+          <button class="p-2">📞</button>
+        </div>
+        <a href="login.html" class="block bg-zinc-200 p-2 rounded text-center text-gray-800 font-semibold hover:bg-zinc-300 transition duration-300">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mx-auto p-5 flex">
+    <aside class="sidebar w-1/4 mr-5">
+      <h2>Navigation</h2>
+      <a href="forum.html">Forum Home</a>
+      <a href="scholarships.html">Scholarships</a>
+      <a href="category.html?category=Scholarship Applications">Scholarship Applications</a>
+      <a href="category.html?category=Study Tips">Study Tips</a>
+    </aside>
+
+    <div class="main-content w-3/4">
+      <nav class="breadcrumb">
+        <a href="forum.html">Forum</a>
+        <span>›</span>
+        <a id="subforum-link" href="#">Subforum Name</a>
+        <span>›</span>
+        <a id="subsubforum-link" href="#">Question Title</a>
+      </nav>
+
+      <div class="question-details">
+        <div class="question-header">
+          <img id="questioner-avatar" src="https://picsum.photos/seed/questioner/50" alt="Questioner Avatar">
+          <div id="questioner-name">Alex Johnson</div>
+        </div>
+        <h1 id="question-title">Does MEXT Scholarship cover living expenses?</h1>
+        <p id="question-description">I want to know if the MEXT Scholarship provides any allowances for living expenses.</p>
+      </div>
+
+      <div class="comments-section">
+        <h2>Answers</h2>
+        <div class="comment-box">
+          <textarea id="commentBox" class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="4" placeholder="Write an answer..."></textarea>
+          <button onclick="postComment()">Post Answer</button>
+        </div>
+        <div id="commentList" class="mt-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function postComment() {
+      const commentBox = document.getElementById('commentBox');
+      const commentList = document.getElementById('commentList');
+      const newComment = document.createElement('div');
+      newComment.className = 'comment';
+      const commentId = `comment-${Date.now()}`;
+      newComment.innerHTML = `
+        <div class="answer-header">
+          <img src="https://picsum.photos/seed/your-avatar/50" alt="Your Avatar">
+          <div>You</div>
+        </div>
+        <p>${commentBox.value}</p>
+        <div class="comment-footer">
+          <button onclick="likeComment(this)">
+            <i class="fa fa-thumbs-up"></i> Like
+          </button>
+          <span>0 likes</span>
+          <button onclick="toggleReplyBox('${commentId}')">Reply</button>
+        </div>
+        <div class="reply-section" id="${commentId}">
+          <div class="reply-box">
+            <textarea class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="2" placeholder="Write a reply..."></textarea>
+            <button onclick="postReply(this)">Post Reply</button>
+          </div>
+        </div>
+      `;
+      commentList.appendChild(newComment);
+      commentBox.value = ''; // Clear the textarea after posting
+    }
+
+    function postReply(button) {
+      const replyBox = button.parentElement;
+      const replySection = replyBox.parentElement;
+      const newReply = document.createElement('div');
+      newReply.className = 'reply';
+      newReply.innerHTML = `
+        <p><span class="user-name">You:</span> ${replyBox.querySelector('textarea').value}</p>
+      `;
+      replySection.insertBefore(newReply, replyBox);
+      replyBox.querySelector('textarea').value = ''; // Clear the textarea after posting
+    }
+
+    function toggleReplyBox(commentId) {
+      const replyBox = document.getElementById(commentId).querySelector('.reply-box');
+      if (replyBox.style.display === 'none' || replyBox.style.display === '') {
+        replyBox.style.display = 'flex';
+      } else {
+        replyBox.style.display = 'none';
+      }
+    }
+
+    function likeComment(button) {
+      const span = button.nextElementSibling;
+      let likes = parseInt(span.innerText);
+      span.innerText = `${++likes} likes`;
+    }
+
+    // Example data (replace this with actual data fetching logic)
+    const questions = [
+      {
+        id: 101,
+        scholarshipId: 1,
+        title: "Does MEXT Scholarship cover living expenses?",
+        description: "I want to know if the MEXT Scholarship provides any allowances for living expenses.",
+        user: {
+          name: "Alex Johnson",
+          avatar: "https://picsum.photos/seed/questioner/50"
+        },
+        comments: [
+          {
+            id: 1,
+            user: {
+              name: "John Doe",
+              avatar: "https://picsum.photos/seed/user1/50"
+            },
+            content: "The MEXT Scholarship does cover living expenses. You will receive a monthly stipend.",
+            replies: [
+              {
+                id: 1,
+                user: {
+                  name: "Alice Johnson",
+                  avatar: "https://picsum.photos/seed/user2/50"
+                },
+                content: "Thank you for the information!"
+              }
+            ]
+          },
+          {
+            id: 2,
+            user: {
+              name: "Jane Smith",
+              avatar: "https://picsum.photos/seed/user2/50"
+            },
+            content: "I applied last year, and the process was quite straightforward. Make sure you have all your documents ready.",
+            replies: []
+          }
+        ]
+      },
+      {
+        id: 102,
+        scholarshipId: 1,
+        title: "What are the eligibility criteria for MEXT Scholarship?",
+        description: "Can someone explain the eligibility requirements for applying to the MEXT Scholarship?",
+        user: {
+          name: "Chris Lee",
+          avatar: "https://picsum.photos/seed/questioner2/50"
+        },
+        comments: [
+          {
+            id: 3,
+            user: {
+              name: "David Kim",
+              avatar: "https://picsum.photos/seed/user3/50"
+            },
+            content: "You need to have a minimum GPA of 2.3 on a 3.0 scale and meet the language proficiency requirements.",
+            replies: [
+              {
+                id: 2,
+                user: {
+                  name: "Emma Brown",
+                  avatar: "https://picsum.photos/seed/user4/50"
+                },
+                content: "Is there any age limit for the scholarship?"
+              },
+              {
+                id: 3,
+                user: {
+                  name: "David Kim",
+                  avatar: "https://picsum.photos/seed/user3/50"
+                },
+                content: "Yes, you should be under 35 years of age at the time of application."
+              }
+            ]
+          },
+          {
+            id: 4,
+            user: {
+              name: "Sophia Turner",
+              avatar: "https://picsum.photos/seed/user5/50"
+            },
+            content: "In addition to GPA and language requirements, you need to pass the entrance exam.",
+            replies: []
+          }
+        ]
+      },
+      {
+        id: 201,
+        scholarshipId: 2,
+        title: "How to apply for GKS Scholarship?",
+        description: "Can anyone provide a step-by-step guide on applying for the GKS Scholarship?",
+        user: {
+          name: "Emma Brown",
+          avatar: "https://picsum.photos/seed/questioner3/50"
+        },
+        comments: []
+      }
+      // Add more questions as needed
+    ];
+
+    // Extract query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const scholarshipId = urlParams.get('scholarshipId');
+    const questionId = urlParams.get('questionId');
+
+    // Find the question by ID
+    const question = questions.find(q => q.id === parseInt(questionId) && q.scholarshipId === parseInt(scholarshipId));
+
+    // Populate the page with question details
+    if (question) {
+      document.getElementById('question-title').textContent = question.title;
+      document.getElementById('question-description').textContent = question.description;
+      document.querySelector('.question-header img').src = question.user.avatar;
+      document.querySelector('.question-header div').textContent = question.user.name;
+      document.getElementById('subforum-link').textContent = question.title;
+      document.getElementById('subforum-link').href = `subforum.html?id=${scholarshipId}`;
+      document.getElementById('subsubforum-link').textContent = question.title;
+      document.getElementById('subsubforum-link').href = `subsubforum.html?scholarshipId=${scholarshipId}&questionId=${questionId}`;
+      loadComments(question.comments);
+    } else {
+      document.getElementById('question-title').textContent = 'Question not found';
+    }
+
+    function loadComments(comments) {
+      const commentList = document.getElementById('commentList');
+      comments.forEach(comment => {
+        const commentId = `comment-${comment.id}`;
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment';
+        commentDiv.innerHTML = `
+          <div class="answer-header">
+            <img src="${comment.user.avatar}" alt="User Avatar">
+            <div>${comment.user.name}</div>
+          </div>
+          <p>${comment.content}</p>
+          <div class="comment-footer">
+            <button onclick="likeComment(this)">
+              <i class="fa fa-thumbs-up"></i> Like
+            </button>
+            <span>0 likes</span>
+            <button onclick="toggleReplyBox('${commentId}')">Reply</button>
+          </div>
+          <div class="reply-section" id="${commentId}">
+            <div class="reply-box">
+              <textarea class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="2" placeholder="Write a reply..."></textarea>
+              <button onclick="postReply(this)">Post Reply</button>
+            </div>
+          </div>
+        `;
+        commentList.appendChild(commentDiv);
+        loadReplies(comment.replies, commentDiv.querySelector('.reply-section'));
+      });
+    }
+
+    function loadReplies(replies, replySection) {
+      replies.forEach(reply => {
+        const replyDiv = document.createElement('div');
+        replyDiv.className = 'reply';
+        replyDiv.innerHTML = `
+          <p><span class="user-name">${reply.user.name}:</span> ${reply.content}</p>
+        `;
+        replySection.insertBefore(replyDiv, replySection.querySelector('.reply-box'));
+      });
+    }
+  </script>
+</body>
+</html>
