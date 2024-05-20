@@ -13,50 +13,6 @@
             margin-right: auto;
             padding: 20px;
         }
-        .slide-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .mySlides {
-            display: none;
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        .mySlides img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-        }
-        .shadow-mask {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100px;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
-            pointer-events: none;
-        }
-        .shadow-mask.left {
-            left: 0;
-            transform: rotateY(180deg);
-        }
-        .shadow-mask.right {
-            right: 0;
-        }
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-        @keyframes fade {
-            from { opacity: .4 }
-            to { opacity: 1 }
-        }
         .header {
             background-color: #f9fafb;
             padding: 20px 0;
@@ -277,23 +233,6 @@
     </header>
 
     <div class="container mx-auto p-5">
-        <!-- Slideshow container -->
-        <div class="slide-container">
-            <!-- Shadows -->
-            <div class="shadow-mask left"></div>
-            <div class="shadow-mask right"></div>
-            <!-- Full-width images -->
-            <div class="mySlides fade">
-                <img src="image/MEXT scholarship/1.png" alt="Scholarship Photo 1">
-            </div>
-            <div class="mySlides fade">
-                <img src="image/MEXT scholarship/2.png" alt="Scholarship Photo 2">
-            </div>
-            <div class="mySlides fade">
-                <img src="image/MEXT scholarship/3.png" alt="Scholarship Photo 3">
-            </div>
-        </div>
-
         <div class="content-wrapper">
             <!-- Scholarship Information -->
             <div class="mt-8">
@@ -358,21 +297,6 @@
     </div>
 
     <script>
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}
-            slides[slideIndex-1].style.display = "block";  
-            setTimeout(showSlides, 2000); // Change image every 2 seconds
-        }
-
         function postComment() {
             const commentBox = document.getElementById('commentBox');
             const commentList = document.getElementById('commentList');
