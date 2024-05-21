@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,53 +7,43 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body,
-    html {
+    body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       font-family: Arial, sans-serif;
       overflow: hidden;
     }
-
     .header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      border-bottom: 1px solid #d3d3d3;
+      border-bottom: 1px solid #d3d3d3; /* Add gray line */
     }
-
     .main-container {
       display: flex;
-      height: calc(100% - 60px);
-      margin-top: 60px;
+      height: calc(100% - 60px); /* Adjust this value based on the height of your header */
+      margin-top: 60px; /* Adjust this value based on the height of your header */
     }
-
     .sidebar {
       width: 280px;
       padding: 16px;
       border-right: 1px solid #d3d3d3;
       overflow-y: auto;
-      background-color: #ffffff;
+      background-color: #f9fafb;
     }
-
     .menu-section {
       margin-bottom: 20px;
     }
-
     .menu-section h3 {
       text-transform: uppercase;
       font-size: 12px;
       color: #888;
-      padding: 10px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      margin-bottom: 10px;
+      padding-left: 10px;
     }
-
     .menu-item {
       display: flex;
       align-items: center;
@@ -63,49 +52,35 @@
       cursor: pointer;
       border-radius: 4px;
       transition: background-color 0.3s;
-      color: #333;
+      color: #333; /* Darker color */
     }
-
     .menu-item:hover {
       background-color: #f5f5f5;
     }
-
-    .menu-item i {
+    .menu-item img, .menu-item i {
       width: 20px;
-      color: #333;
+      margin-right: 10px;
+      color: #333; /* Darker color */
     }
-
     .menu-item.active {
       background-color: #e8e8e8;
     }
-
     .submenu {
-      
-      padding-left: 0;
+      padding-left: 20px;
+      border-left: 2px solid #d3d3d3;
+      margin-left: 10px;
       display: none;
     }
-
     .submenu-item {
-      padding: 10px 0;
-      padding-left: 20px;
+      padding: 5px 0;
     }
-
     .submenu-item a {
       text-decoration: none;
       color: #555;
     }
-
     .submenu-item a:hover {
       text-decoration: underline;
     }
-
-    .subsubmenu {
-      margin-left: 15px;
-      padding-left: 5px;
-      border-left: 2px solid #d3d3d3;
-      display: none;
-    }
-
     .main-content {
       background-color: #ffffff;
       padding: 20px;
@@ -114,63 +89,52 @@
       flex-grow: 1;
       overflow-y: auto;
     }
-
     .main-content h1 {
       font-size: 24px;
       font-weight: 600;
       color: #374151;
     }
-
     .main-content p {
       color: #555;
     }
-
     .question-list h2 {
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 10px;
     }
-
     .question-item {
       background-color: #f9fafb;
       padding: 15px;
       border-radius: 5px;
       margin-bottom: 10px;
     }
-
     .question-item h3 {
       font-size: 18px;
       font-weight: 500;
       color: #374151;
     }
-
     .question-item p {
       color: #555;
       margin: 5px 0;
     }
-
     .question-item a {
       color: #0d6efd;
       text-decoration: none;
     }
-
     .question-item a:hover {
       text-decoration: underline;
     }
-
     .toggle-btn {
       cursor: pointer;
     }
   </style>
 </head>
-
 <body class="bg-gray-100">
   <header class="bg-white header">
     <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-10">
       <div class="flex items-center">
         <a href="index.html">
-          <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap."
-            style="width: 55px;">
+          <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap." style="width: 55px;">
         </a>
         <h1 class="text-2xl font-bold text-primary">Scholarar</h1>
         <div class="flex space-x-12 ml-8">
@@ -196,7 +160,7 @@
     <aside class="sidebar" id="sidebar-menu">
       <!-- Menu will be dynamically inserted here -->
     </aside>
-
+    
     <div class="main-content">
       <h1 id="subforum-title" class="text-3xl font-bold text-gray-800 mb-2">Scholarship Questions</h1>
       <p id="subforum-description" class="text-gray-600 mb-4">Browse questions related to the selected scholarship and join the discussion.</p>
@@ -205,8 +169,7 @@
         <h2 class="text-lg md:text-xl font-semibold">Questions</h2>
         <div class="flex">
           <div class="relative">
-            <input id="search-input" type="text" placeholder="Quick search..."
-              class="pl-4 pr-10 py-2 w-full md:w-64 bg-white text-zinc-700 placeholder-zinc-500 rounded-full border border-blue-700 focus:outline-none focus:border-blue-500" />
+            <input id="search-input" type="text" placeholder="Quick search..." class="pl-4 pr-10 py-2 w-full md:w-64 bg-white text-zinc-700 placeholder-zinc-500 rounded-full border border-blue-700 focus:outline-none focus:border-blue-500" />
           </div>
         </div>
       </div>
@@ -217,15 +180,13 @@
       <!-- Pagination Controls -->
       <div class="flex justify-center mt-6">
         <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-          <button id="prev-btn"
-            class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
+          <button id="prev-btn" class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
             Previous
           </button>
           <div id="pagination-numbers" class="flex space-x-1">
             <!-- Page numbers will be dynamically inserted here -->
           </div>
-          <button id="next-btn"
-            class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
+          <button id="next-btn" class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
             Next
           </button>
         </nav>
@@ -240,6 +201,7 @@
   </div>
 
   <script>
+    // Example data (replace this with actual data fetching logic)
     const scholarships = [
       {
         id: 1,
@@ -256,6 +218,7 @@
             title: "What are the eligibility criteria for MEXT Scholarship?",
             description: "Can someone explain the eligibility requirements for applying to the MEXT Scholarship?",
           }
+          // Add more questions as needed
         ]
       },
       {
@@ -268,8 +231,10 @@
             title: "How to apply for GKS Scholarship?",
             description: "Can anyone provide a step-by-step guide on applying for the GKS Scholarship?",
           }
+          // Add more questions as needed
         ]
       }
+      // Add more scholarships as needed
     ];
 
     const menuData = [
@@ -279,12 +244,12 @@
         link: 'index.html',
         active: false
       },
-      // {
-      //   title: 'Popular',
-      //   icon: 'fas fa-fire',
-      //   link: 'popular.html',
-      //   active: true
-      // },
+      {
+        title: 'Popular',
+        icon: 'fas fa-fire',
+        link: 'popular.html',
+        active: true
+      },
       {
         title: 'Topics',
         icon: '',
@@ -374,7 +339,7 @@
       }
     ];
 
-    const itemsPerPage = 2;
+    const itemsPerPage = 2; // Adjust items per page as needed
     let currentPage = 1;
     let filteredQuestions = [];
     let currentScholarshipQuestions = [];
@@ -385,12 +350,15 @@
     const paginationNumbers = document.getElementById('pagination-numbers');
     const searchInput = document.getElementById('search-input');
 
+    // Extract query parameters
     const urlParams = new URLSearchParams(window.location.search);
     const scholarshipId = urlParams.get('id');
     const subforumName = urlParams.get('subforumName');
 
+    // Find the scholarship by ID
     const scholarship = scholarships.find(s => s.id === parseInt(scholarshipId));
 
+    // Populate the page with scholarship details and questions
     if (scholarship) {
       document.getElementById('subforum-title').textContent = scholarship.title;
       document.getElementById('subforum-description').textContent = scholarship.description;
@@ -406,15 +374,17 @@
         question.title.toLowerCase().includes(searchTerm) ||
         question.description.toLowerCase().includes(searchTerm)
       );
-      currentPage = 1;
+      currentPage = 1; // Reset to the first page
       renderQuestions();
     }
 
     function renderQuestions() {
+      // Calculate the start and end index of questions for the current page
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
       const currentQuestions = filteredQuestions.slice(startIndex, endIndex);
 
+      // Render questions
       questionList.innerHTML = currentQuestions.map(question => `
         <div class="question-item">
           <h3>${question.title}</h3>
@@ -423,9 +393,11 @@
         </div>
       `).join('');
 
+      // Update button states
       prevBtn.disabled = currentPage === 1;
       nextBtn.disabled = currentPage === Math.ceil(filteredQuestions.length / itemsPerPage);
 
+      // Render page numbers
       renderPageNumbers();
     }
 
@@ -453,6 +425,7 @@
       }
     }
 
+    // Add event listeners to pagination buttons
     prevBtn.addEventListener('click', () => {
       if (currentPage > 1) {
         currentPage--;
@@ -467,8 +440,10 @@
       }
     });
 
+    // Add event listener to search input
     searchInput.addEventListener('input', filterQuestions);
 
+    // Initial render
     filterQuestions();
 
     function toggleMenu(menuId) {
@@ -476,16 +451,12 @@
       const icon = submenu.previousElementSibling.querySelector('.fa-chevron-down, .fa-chevron-up');
       if (submenu.style.display === 'none' || submenu.style.display === '') {
         submenu.style.display = 'block';
-        if (icon) {
-          icon.classList.remove('fa-chevron-down');
-          icon.classList.add('fa-chevron-up');
-        }
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
       } else {
         submenu.style.display = 'none';
-        if (icon) {
-          icon.classList.remove('fa-chevron-up');
-          icon.classList.add('fa-chevron-down');
-        }
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
       }
     }
 
@@ -494,26 +465,19 @@
       sidebarMenu.innerHTML = menuData.map(section => `
         <div class="menu-section">
           ${section.submenus ? `
-            <h3 onclick="toggleMenu('${section.title.replace(/\s+/g, '-').toLowerCase()}-menu')">
-              ${section.title}
-              <i class="fas fa-chevron-down"></i>
-            </h3>
-            <div id="${section.title.replace(/\s+/g, '-').toLowerCase()}-menu" class="submenu">
-              ${section.submenus.map(item => `
-                <div class="menu-item toggle-btn" onclick="toggleMenu('${item.title.replace(/\s+/g, '-').toLowerCase()}-submenu')">
-                  <div style="display: flex; align-items: center;">
-                    <i class="${item.icon}"></i>
-                    <span>${item.title}</span>
-                  </div>
-                  ${item.sublinks ? '<i class="fas fa-chevron-down"></i>' : ''}
-                </div>
-                <div id="${item.title.replace(/\s+/g, '-').toLowerCase()}-submenu" class="subsubmenu">
-                  ${item.sublinks ? item.sublinks.map(sublink => `
-                    <div class="submenu-item"><a href="${sublink.link}">${sublink.title}</a></div>
-                  `).join('') : ''}
-                </div>
-              `).join('')}
-            </div>
+            <h3>${section.title}</h3>
+            ${section.submenus.map(item => `
+              <div class="menu-item toggle-btn" onclick="toggleMenu('${item.title.replace(/\s+/g, '-').toLowerCase()}-submenu')">
+                <i class="${item.icon}"></i>
+                <span>${item.title}</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div id="${item.title.replace(/\s+/g, '-').toLowerCase()}-submenu" class="submenu">
+                ${item.sublinks ? item.sublinks.map(sublink => `
+                  <div class="submenu-item"><a href="${sublink.link}">${sublink.title}</a></div>
+                `).join('') : ''}
+              </div>
+            `).join('')}
           ` : `
             <div class="menu-item ${section.active ? 'active' : ''}">
               <a href="${section.link}">
@@ -526,13 +490,12 @@
       `).join('');
     }
 
+    // Render menu
     renderMenu();
 
+    // Initially display all submenus
     document.querySelectorAll('.submenu').forEach(submenu => {
       submenu.style.display = 'block';
-    });
-    document.querySelectorAll('.subsubmenu').forEach(subsubmenu => {
-      subsubmenu.style.display = 'block';
     });
     document.querySelectorAll('.submenu').forEach(submenu => {
       const icon = submenu.previousElementSibling.querySelector('.fa-chevron-down');
@@ -543,5 +506,4 @@
     });
   </script>
 </body>
-
 </html>
