@@ -7,37 +7,77 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .content-wrapper {
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 20px;
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid #d3d3d3; /* Add gray line */
+    }
+    .main-container {
+      display: flex;
+      height: calc(100% - 60px); /* Adjust this value based on the height of your header */
+      margin-top: 60px; /* Adjust this value based on the height of your header */
     }
     .sidebar {
+      width: 250px;
+      padding: 16px;
+      border-right: 1px solid #d3d3d3;
+      overflow-y: auto;
       background-color: #f9fafb;
-      padding: 20px;
-      border-radius: 5px;
     }
-    .sidebar h2 {
-      font-size: 20px;
-      font-weight: 600;
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      width: 40px;
+      margin-right: 8px;
+    }
+    .menu-section {
+      margin-bottom: 20px;
+    }
+    .menu-section h3 {
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #888;
       margin-bottom: 10px;
+      padding-left: 10px;
     }
-    .sidebar a {
-      display: block;
-      color: #374151;
-      padding: 10px 0;
-      text-decoration: none;
-      border-bottom: 1px solid #e5e7eb;
+    .menu-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
     }
-    .sidebar a:hover {
-      color: #0d6efd;
+    .menu-item:hover {
+      background-color: #f5f5f5;
+    }
+    .menu-item img, .menu-item i {
+      width: 20px;
+      margin-right: 10px;
+    }
+    .menu-item.active {
+      background-color: #e8e8e8;
     }
     .main-content {
       background-color: #ffffff;
       padding: 20px;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      flex-grow: 1;
+      overflow-y: auto;
     }
     .main-content h1 {
       font-size: 24px;
@@ -77,39 +117,126 @@
   </style>
 </head>
 <body class="bg-gray-100">
-  <header class="bg-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-20">
+  <header class="bg-white  header">
+    <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-10">
       <div class="flex items-center">
         <a href="index.html">
           <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap." style="width: 55px;">
         </a>
-      </div>
-      <div class="flex items-center justify-center flex-grow">
-        <h1 class="text-2xl font-bold text-primary">SCHOLARAR</h1>
+        <h1 class="text-2xl font-bold text-primary">Scholarar</h1>
+        <div class="flex space-x-12 ml-8">
+          <a href="index.html" class="text-zinc-700 hover:text-zinc-900">Scholarship</a>
+          <a href="forum.html" class="text-gray-700 hover:text-primary">Forum</a>
+        </div>
       </div>
       <div class="flex items-center">
         <div class="flex items-center space-x-4">
           <button class="p-2">🔍</button>
+          <a href="scholarship_upload.html" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fas fa-upload"></i></a>
           <a href="https://web.facebook.com/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-facebook"></i></a>
           <a href="https://t.me/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-telegram"></i></a>
           <a href="https://www.tiktok.com/@scholararkh" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-tiktok"></i></a>
-          <button class="p-2">📞</button>
+          <a href="http://www.Scholarar.com" class="text-gray-700 hover:text-primary">About Us</a>
+          <a href="login.html" class="block bg-zinc-200 p-2 rounded text-center text-gray-800 font-semibold hover:bg-zinc-300 transition duration-300">Login</a>
         </div>
-        <a href="login.html" class="block bg-zinc-200 p-2 rounded text-center text-gray-800 font-semibold hover:bg-zinc-300 transition duration-300">Login</a>
       </div>
     </div>
   </header>
 
-  <div class="container mx-auto p-5 flex">
-    <aside class="sidebar w-1/4 mr-5">
-      <h2>Navigation</h2>
-      <a href="forum.html">Forum Home</a>
-      <a href="scholarships.html">Scholarships</a>
-      <a href="category.html?category=Scholarship Applications">Scholarship Applications</a>
-      <a href="category.html?category=Study Tips">Study Tips</a>
-    </aside>
+  <div class="main-container">
+    <aside class="sidebar">
 
-    <div class="main-content w-3/4">
+    
+      <div class="menu-section">
+        <div class="menu-item">
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+        </div>
+        <div class="menu-item active">
+          <a href="popular.html">
+            <i class="fas fa-fire"></i>
+            <span>Popular</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="menu-section">
+        <h3>Topics</h3>
+        <div class="menu-item">
+          <a href="category.html?category=Internet%20Culture%20(Viral)">
+            <i class="fas fa-laugh"></i>
+            <span>Internet Culture (Viral)</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="category.html?category=Games">
+            <i class="fas fa-gamepad"></i>
+            <span>Games</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="category.html?category=Q%26As">
+            <i class="fas fa-question-circle"></i>
+            <span>Q&As</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="category.html?category=Technology">
+            <i class="fas fa-cogs"></i>
+            <span>Technology</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="category.html?category=Pop%20Culture">
+            <i class="fas fa-star"></i>
+            <span>Pop Culture</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="category.html?category=Movies%20%26%20TV">
+            <i class="fas fa-film"></i>
+            <span>Movies & TV</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="category.html?category=More">
+            <span>See more</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="menu-section">
+        <h3>Resources</h3>
+        <div class="menu-item">
+          <a href="about.html">
+            <i class="fas fa-info-circle"></i>
+            <span>About Reddit</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="advertise.html">
+            <i class="fas fa-bullhorn"></i>
+            <span>Advertise</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="help.html">
+            <i class="fas fa-question"></i>
+            <span>Help</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="blog.html">
+            <i class="fas fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+    
+    <div class="main-content">
       <h1 id="subforum-title" class="text-3xl font-bold text-gray-800 mb-2">Scholarship Questions</h1>
       <p id="subforum-description" class="text-gray-600 mb-4">Browse questions related to the selected scholarship and join the discussion.</p>
 
