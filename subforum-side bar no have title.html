@@ -112,8 +112,19 @@
       background-color: #ffffff;
       padding: 20px;
       border-radius: 5px;
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
       flex-grow: 1;
       overflow-y: auto;
+    }
+
+    .main-content h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .main-content p {
+      color: #555;
     }
 
     .question-list h2 {
@@ -163,19 +174,6 @@
       color: #888;
       right: -15px;
     }
-
-    .sidebar-title {
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 5px;
-    }
-
-    .sidebar-description {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 20px;
-    }
   </style>
 </head>
 <body class="bg-gray-100">
@@ -208,10 +206,13 @@
 
   <div class="main-container">
     <aside class="sidebar" id="sidebar-menu">
-      <!-- The scholarship title and description will be inserted here dynamically -->
+      <!-- Menu will be dynamically inserted here -->
     </aside>
 
     <div class="main-content">
+      <h1 id="subforum-title" class="text-3xl font-bold text-gray-800 mb-2">Scholarship Questions</h1>
+      <p id="subforum-description" class="text-gray-600 mb-4">Browse questions related to the selected scholarship and join the discussion.</p>
+
       <div class="flex items-center justify-between border-b border-zinc-200 pb-4 mb-4">
         <h2 class="text-lg md:text-xl font-semibold">Questions</h2>
         <div class="flex">
@@ -284,12 +285,12 @@
     ];
 
     const menuData = [
-      // {
-      //   title: 'Home',
-      //   icon: 'fas fa-home',
-      //   link: 'index.html',
-      //   active: false
-      // },
+      {
+        title: 'Home',
+        icon: 'fas fa-home',
+        link: 'index.html',
+        active: false
+      },
       // {
       //   title: 'Popular',
       //   icon: 'fas fa-fire',
@@ -362,7 +363,7 @@
         icon: '',
         submenus: [
           {
-            title: 'About Scholarar',
+            title: 'About Reddit',
             icon: 'fas fa-info-circle',
             link: 'about.html'
           },
@@ -403,10 +404,8 @@
     const scholarship = scholarships.find(s => s.id === parseInt(scholarshipId));
 
     if (scholarship) {
-      document.getElementById('sidebar-menu').insertAdjacentHTML('afterbegin', `
-        <div class="sidebar-title">${scholarship.title}</div>
-        <div class="sidebar-description">${scholarship.description}</div>
-      `);
+      document.getElementById('subforum-title').textContent = scholarship.title;
+      document.getElementById('subforum-description').textContent = scholarship.description;
       currentScholarshipQuestions = scholarship.questions;
       filterQuestions();
     } else {
@@ -504,7 +503,7 @@
 
     function renderMenu() {
       const sidebarMenu = document.getElementById('sidebar-menu');
-      sidebarMenu.innerHTML += menuData.map(section => `
+      sidebarMenu.innerHTML = menuData.map(section => `
         <div class="menu-section">
           ${section.submenus ? `
             <h3 onclick="toggleMenu('${section.title.replace(/\s+/g, '-').toLowerCase()}-menu')">
@@ -537,20 +536,23 @@
           `}
         </div>
       `).join('');
-      
-      // Auto-expand "Topics" and "Resources"
-      document.querySelectorAll('.menu-section').forEach(section => {
-        const h3 = section.querySelector('h3');
-        if (h3 && (h3.innerText.toLowerCase().includes('topics') || h3.innerText.toLowerCase().includes('resources'))) {
-          const submenu = section.querySelector('.submenu');
-          submenu.style.display = 'block';
-          h3.querySelector('i').classList.remove('fa-chevron-down');
-          h3.querySelector('i').classList.add('fa-chevron-up');
-        }
-      });
     }
 
     renderMenu();
+
+    document.querySelectorAll('.submenu').forEach(submenu => {
+      submenu.style.display = 'block';
+    });
+    document.querySelectorAll('.subsubmenu').forEach(subsubmenu => {
+      subsubmenu.style.display = 'block';
+    });
+    document.querySelectorAll('.submenu').forEach(submenu => {
+      const icon = submenu.previousElementSibling.querySelector('.fa-chevron-down');
+      if (icon) {
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      }
+    });
   </script>
 </body>
 </html>
