@@ -8,40 +8,106 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    body {
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: 'Inter', sans-serif;
+      overflow: hidden;
     }
-    .content-wrapper {
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 20px;
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid #d3d3d3;
+      background-color: #fff;
+    }
+    .main-container {
+      display: flex;
+      height: calc(100% - 60px);
+      margin-top: 60px;
+      overflow: hidden;
     }
     .sidebar {
-      background-color: #f9fafb;
-      padding: 20px;
-      border-radius: 5px;
+      width: 280px;
+      padding: 8px;
+      padding-left: 10px;
+      padding-top: 25px;
+      border-right: 1px solid #d3d3d3;
+      overflow-y: auto;
+      background-color: #ffffff;
     }
-    .sidebar h2 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 10px;
+    .menu-section {
+      margin-bottom: 0px;
     }
-    .sidebar a {
-      display: block;
-      color: #374151;
-      padding: 10px 0;
+    .menu-section h3 {
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #646464;
+      padding: 25px;
+      padding-left: 5px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .menu-section h3 i {
+      margin-right: 10px;
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      padding-left: 15px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 5px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      color: #333;
       text-decoration: none;
-      border-bottom: 1px solid #e5e7eb;
     }
-    .sidebar a:hover {
-      color: #0d6efd;
+    .menu-item:hover {
+      background-color: #f5f5f5;
+    }
+    .menu-item i {
+      width: 20px;
+      color: #888;
+      margin-right: 10px;
+    }
+    .menu-item.active {
+      background-color: #e8e8e8;
+    }
+    .submenu, .subsubmenu, .subsubsubmenu {
+      padding: 0;
+      display: none;
+    }
+    .submenu-item, .subsubmenu-item, .subsubsubmenu-item {
+      padding: 8px 0;
+      padding-left: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: #555;
+    }
+    .subsubmenu, .subsubsubmenu {
+      margin-left: 20px;
+      padding-left: 5px;
+      border-left: 1px solid #d3d3d3;
     }
     .main-content {
       background-color: #ffffff;
       padding: 20px;
       border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      flex-grow: 1;
+      overflow-y: auto;
     }
     .breadcrumb {
       margin-bottom: 20px;
@@ -59,18 +125,6 @@
     }
     .breadcrumb span {
       margin: 0 5px;
-    }
-    .main-content h1 {
-      font-size: 24px;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 20px;
-    }
-    .main-content p {
-      color: #555;
-    }
-    .question-details {
-      margin-bottom: 20px;
     }
     .question-details h1 {
       font-size: 24px;
@@ -195,18 +249,34 @@
       font-weight: 600;
       margin-right: 10px;
     }
+    .footer-links {
+      margin-top: 20px;
+      padding: 10px 0;
+      border-top: 1px solid #d3d3d3;
+    }
+    .footer-links a {
+      display: block;
+      color: #374151;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: #0d6efd;
+    }
   </style>
 </head>
 <body class="bg-gray-100">
-  <header class="bg-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-20">
+  <header class="bg-white header">
+    <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-6">
       <div class="flex items-center">
         <a href="index.html">
           <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap." style="width: 55px;">
         </a>
-      </div>
-      <div class="flex items-center justify-center flex-grow">
         <h1 class="text-2xl font-bold text-primary">SCHOLARAR</h1>
+        <div class="flex space-x-12 ml-8">
+          <a href="index.html" class="text-zinc-700 hover:text-zinc-900">Scholarship</a>
+          <a href="forum.html" class="text-gray-700 hover:text-primary">Forum</a>
+        </div>
       </div>
       <div class="flex items-center">
         <div class="flex items-center space-x-4">
@@ -214,20 +284,17 @@
           <a href="https://web.facebook.com/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-facebook"></i></a>
           <a href="https://t.me/scholarar" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-telegram"></i></a>
           <a href="https://www.tiktok.com/@scholararkh" class="p-2 text-zinc-700 hover:text-zinc-900"><i class="fab fa-tiktok"></i></a>
-          <button class="p-2">📞</button>
+          <a href="login.html" class="block bg-zinc-200 p-2 rounded text-center text-gray-800 font-semibold hover:bg-zinc-300 transition duration-300">Login</a>
         </div>
-        <a href="login.html" class="block bg-zinc-200 p-2 rounded text-center text-gray-800 font-semibold hover:bg-zinc-300 transition duration-300">Login</a>
       </div>
     </div>
   </header>
 
-  <div class="container mx-auto p-5 flex">
-    <aside class="sidebar w-1/4 mr-5">
-      <h2>Navigation</h2>
-      <a href="forum.html">Forum Home</a>
-      <a href="scholarships.html">Scholarships</a>
-      <a href="category.html?category=Scholarship Applications">Scholarship Applications</a>
-      <a href="category.html?category=Study Tips">Study Tips</a>
+  <div class="main-container">
+    <aside class="sidebar" id="sidebar-menu">
+      <div class="sidebar-title">MEXT Scholarship 2023</div>
+      <div class="sidebar-description">Japanese Government Scholarship</div>
+      <!-- Menu data will be inserted here dynamically -->
     </aside>
 
     <div class="main-content w-3/4">
@@ -483,6 +550,259 @@
         replySection.insertBefore(replyDiv, replySection.querySelector('.reply-box'));
       });
     }
+
+    // Sidebar menu data
+    const menuData = [
+      {
+        title: 'Host Universities',
+        icon: 'fas fa-university',
+        submenus: [
+          { title: 'All applicants can choose their host university across Japan.', link: '#' }
+        ]
+      },
+      {
+        title: 'Course Level',
+        icon: 'fas fa-graduation-cap',
+        submenus: [
+          {
+            title: 'Undergraduate Degree Programs',
+            sublinks: [
+              { title: 'Duration: 4-5 years', link: '#' },
+              {
+                title: 'Fields of Study:', sublinks: [
+                  { title: 'Social Sciences and Humanities', link: '#' },
+                  { title: 'Natural Sciences', link: '#' }
+                ]
+              }
+            ]
+          },
+          {
+            title: 'Master’s Programs',
+            sublinks: [
+              { title: 'Duration: 2-3 years', link: '#' },
+              { title: 'Fields of Study: All fields of study available at Japanese universities', link: '#' }
+            ]
+          },
+          {
+            title: 'Doctoral Programs (PhD)',
+            sublinks: [
+              { title: 'Duration: 3-4 years', link: '#' },
+              { title: 'Fields of Study: All fields of study available at Japanese universities', link: '#' }
+            ]
+          },
+          {
+            title: 'College of Technology Programs',
+            sublinks: [
+              { title: 'Duration: 4 years', link: '#' },
+              { title: 'Fields of Study: Mechanical Engineering', link: '#' },
+              { title: 'Electrical and Electronic Engineering', link: '#' },
+              { title: 'Information, Communication, and Network Engineering', link: '#' },
+              { title: 'Materials Engineering', link: '#' },
+              { title: 'Architecture and Civil Engineering', link: '#' },
+              { title: 'Maritime Engineering', link: '#' },
+              { title: 'Other related fields', link: '#' }
+            ]
+          },
+          {
+            title: 'Specialized Training Programs',
+            sublinks: [
+              { title: 'Duration: 3 years', link: '#' },
+              { title: 'Fields of Study: Technology', link: '#' },
+              { title: 'Personal Care and Nutrition', link: '#' },
+              { title: 'Education and Welfare', link: '#' },
+              { title: 'Business', link: '#' },
+              { title: 'Fashion and Home Economics', link: '#' },
+              { title: 'Culture and General Education', link: '#' },
+              { title: 'Other fields available at Japanese special training schools', link: '#' }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'MEXT Scholarship Categories',
+        icon: 'fas fa-book',
+        submenus: [
+          { title: 'MEXT Undergraduate Scholarship 2023', link: '#' },
+          { title: 'MEXT Research Scholarship 2023 (Masters and PhD)', link: '#' },
+          { title: 'MEXT College of Technology Scholarship 2023', link: '#' },
+          { title: 'MEXT Specialized Training Scholarship 2023', link: '#' }
+        ]
+      },
+      {
+        title: 'Scholarship Benefits',
+        icon: 'fas fa-gift',
+        submenus: [
+          {
+            title: 'Undergraduate Benefits',
+            sublinks: [
+              { title: 'A tuition fee will be provided.', link: '#' },
+              { title: 'Airfare allowance will be provided.', link: '#' },
+              { title: 'An exam fee will also be provided.', link: '#' },
+              { title: 'A monthly stipend of up to 117,000 yen will be provided.', link: '#' },
+              { title: 'Transportation allowance in Japan will be covered.', link: '#' }
+            ]
+          },
+          {
+            title: 'Research Benefits (Masters & PhD)',
+            sublinks: [
+              { title: 'A tuition fee will be provided.', link: '#' },
+              { title: 'Airfare allowance will be provided.', link: '#' },
+              { title: 'An exam fee will also be provided.', link: '#' },
+              { title: 'Monthly stipend for Master’s students: up to 144,000 yen.', link: '#' },
+              { title: 'Monthly stipend for doctoral students: up to 145,000 yen.', link: '#' },
+              { title: 'Monthly stipend for non-regular students or preparatory education: up to 143,000 yen.', link: '#' },
+              { title: 'Transportation allowance in Japan will be covered.', link: '#' }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Eligibility Criteria',
+        icon: 'fas fa-check-circle',
+        submenus: [
+          { title: 'Diplomatic Relations', link: '#' },
+          { title: 'Health Requirements', link: '#' },
+          { title: 'Age Requirements', link: '#' },
+          { title: 'Educational Requirements', link: '#' }
+        ]
+      },
+      {
+        title: 'Required Documents',
+        icon: 'fas fa-file-alt',
+        submenus: [
+          { title: 'MEXT Application Form 2023', link: '#' },
+          { title: 'Academic Transcripts', link: '#' },
+          { title: 'Certificates of Graduation or Degree', link: '#' },
+          { title: 'Recommendation Letters', link: '#' },
+          { title: 'Medical Certificate', link: '#' },
+          { title: 'Field of Study and Research Plan', link: '#' },
+          { title: 'Passport', link: '#' },
+          { title: 'CV', link: '#' },
+          { title: 'Abstracts of Theses', link: '#' }
+        ]
+      },
+      {
+        title: 'Host Country',
+        icon: 'fas fa-flag',
+        submenus: [
+          { title: 'Japan', link: '#' }
+        ]
+      },
+      {
+        title: 'Offered by',
+        icon: 'fas fa-building',
+        submenus: [
+          { title: 'Ministry of Education, Culture, Sports, Science, and Technology', link: '#' }
+        ]
+      }
+    ];
+
+    function renderMenu() {
+      const sidebarMenu = document.getElementById('sidebar-menu');
+      sidebarMenu.innerHTML += menuData.map(section => `
+        <div class="menu-section">
+          ${section.submenus ? `
+            <h3 onclick="toggleMenu('${section.title.replace(/\s+/g, '-').toLowerCase()}-menu')">
+              <div style="display: flex; align-items: center;">
+                <i class="${section.icon}"></i>
+                <span>${section.title}</span>
+              </div>
+              <i class="fas fa-chevron-down"></i>
+            </h3>
+            <div id="${section.title.replace(/\s+/g, '-').toLowerCase()}-menu" class="submenu">
+              ${section.submenus.map(item => `
+                <div class="menu-item toggle-btn" onclick="${item.sublinks ? `toggleSubmenu(event, '${item.title.replace(/\s+/g, '-').toLowerCase()}-submenu')` : `window.location.href='${item.link}'`}">
+                  <div style="display: flex; align-items: center;">
+                    ${item.icon ? `<i class="${item.icon}"></i>` : ''}
+                    <span>${item.title}</span>
+                  </div>
+                  ${item.sublinks ? '<i class="fas fa-chevron-down" style="font-size: 12px"></i>' : ''}
+                </div>
+                <div id="${item.title.replace(/\s+/g, '-').toLowerCase()}-submenu" class="subsubmenu">
+                  ${item.sublinks ? item.sublinks.map(sublink => `
+                    <div class="submenu-item toggle-btn" onclick="${sublink.sublinks ? `toggleSubmenu(event, '${sublink.title.replace(/\s+/g, '-').toLowerCase()}-subsubmenu')` : `window.location.href='${sublink.link}'`}">
+                      <div style="display: flex; align-items: center;">
+                        <span>${sublink.title}</span>
+                        ${sublink.sublinks ? '<i class="fas fa-chevron-down" style="font-size: 12px"></i>' : ''}
+                      </div>
+                    </div>
+                    <div id="${sublink.title.replace(/\s+/g, '-').toLowerCase()}-subsubmenu" class="subsubsubmenu">
+                      ${sublink.sublinks ? sublink.sublinks.map(subsub => `
+                        <div class="subsubmenu-item"><span>${subsub.title}</span></div>
+                      `).join('') : ''}
+                    </div>
+                  `).join('') : ''}
+                </div>
+              `).join('')}
+            </div>
+          ` : `
+            <a href="${section.link}" class="menu-item ${section.active ? 'active' : ''}">
+              <div style="display: flex; align-items: center;">
+                <i class="${section.icon}"></i>
+                <span>${section.title}</span>
+              </div>
+            </a>
+          `}
+        </div>
+      `).join('');
+
+      // Append footer links
+      sidebarMenu.innerHTML += `
+        <div class="footer-links">
+          <a href="#" class="flex items-center">
+            <i class="fas fa-scroll"></i>
+            <span class="ml-2">Content Policy</span>
+          </a>
+          <a href="#" class="flex items-center">
+            <i class="fas fa-balance-scale"></i>
+            <span class="ml-2">Privacy Policy</span>
+          </a>
+          <a href="#" class="flex items-center">
+            <i class="fas fa-file-contract"></i>
+            <span class="ml-2">User Agreement</span>
+          </a>
+          <p class="text-xs text-gray-500 mt-4">Scholarar © 2024. All rights reserved.</p>
+        </div>
+      `;
+
+      // Auto-expand all sections
+      document.querySelectorAll('.menu-section').forEach(section => {
+        const submenu = section.querySelector('.submenu');
+        if (submenu) {
+          submenu.style.display = 'block';
+          const icon = section.querySelector('i:last-child');
+          if (icon) {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+          }
+        }
+      });
+    }
+
+    function toggleMenu(menuId) {
+      const submenu = document.getElementById(menuId);
+      const icon = submenu.previousElementSibling.querySelector('.fa-chevron-down, .fa-chevron-up');
+      if (submenu.style.display === 'none' || submenu.style.display === '') {
+        submenu.style.display = 'block';
+        if (icon) {
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+        }
+      } else {
+        submenu.style.display = 'none';
+        if (icon) {
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+        }
+      }
+    }
+
+    function toggleSubmenu(event, submenuId) {
+      event.stopPropagation();
+      toggleMenu(submenuId);
+    }
+
+    renderMenu();
   </script>
 </body>
 </html>
