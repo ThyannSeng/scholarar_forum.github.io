@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scholarship Discussion</title>
+  <title>Scholarship Subforum</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -233,223 +234,16 @@
     .footer-links a:hover {
       color: #0d6efd;
     }
-
-    .main-content {
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 5px;
-      flex-grow: 1;
-      overflow-y: auto;
-    }
-
-    .breadcrumb {
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      color: #6b7280;
-    }
-
-    .breadcrumb a {
-      color: #0d6efd;
-      text-decoration: none;
-    }
-
-    .breadcrumb a:hover {
-      text-decoration: underline;
-    }
-
-    .breadcrumb span {
-      margin: 0 5px;
-    }
-
-    .question-details h1 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #2d3748;
-    }
-
-    .question-details p {
-      font-size: 16px;
-      color: #4a5568;
-      margin-top: 5px;
-    }
-
-    .question-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .question-header img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .question-header div {
-      font-size: 16px;
-      font-weight: 600;
-      color: #2d3748;
-    }
-
-    .comments-section h2 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .comment-box {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 20px;
-    }
-
-    .comment-box textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #e5e7eb;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .comment-box button {
-      align-self: flex-end;
-      background-color: #0d6efd;
-      color: #ffffff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .comment-box button:hover {
-      background-color: #0b5ed7;
-    }
-
-    .comment {
-      background-color: #f9fafb;
-      padding: 15px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .comment p {
-      color: #374151;
-    }
-
-    .comment .comment-footer {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    .comment .comment-footer button {
-      background-color: transparent;
-      color: #0d6efd;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      margin-right: 10px;
-    }
-
-    .comment .comment-footer button:hover {
-      text-decoration: underline;
-    }
-
-    .comment .comment-footer button .fa-thumbs-up {
-      margin-right: 5px;
-    }
-
-    .comment .user-name {
-      font-weight: 600;
-      margin-right: 10px;
-    }
-
-    .reply-section {
-      margin-top: 10px;
-      margin-left: 20px;
-    }
-
-    .reply-box {
-      display: none;
-      flex-direction: column;
-      margin-bottom: 10px;
-    }
-
-    .reply-box textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #e5e7eb;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .reply-box button {
-      align-self: flex-end;
-      background-color: #0d6efd;
-      color: #ffffff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .reply-box button:hover {
-      background-color: #0b5ed7;
-    }
-
-    .reply {
-      background-color: #e2e8f0;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .reply .user-name {
-      font-weight: 600;
-      margin-right: 10px;
-    }
-
-    .footer-links {
-      margin-top: 20px;
-      padding: 10px 0;
-      border-top: 1px solid #d3d3d3;
-    }
-
-    .footer-links a {
-      display: block;
-      color: #374151;
-      padding: 10px 0;
-      text-decoration: none;
-    }
-
-    .footer-links a:hover {
-      color: #0d6efd;
-    }
-
-    .sidebar-title {
-      font-size: 22px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 5px;
-    }
-
-    .sidebar-description {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 20px;
-    }
   </style>
-
-
-
 </head>
+
 <body class="bg-gray-100">
   <header class="bg-white header">
     <div class="container mx-auto flex justify-between items-center py-1 px-5 lg:px-6">
       <div class="flex items-center">
         <a href="index.html">
-          <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap." style="width: 55px;">
+          <img src="image/logo.jpg" alt="The Scholarar logo, a blue and green circle with a book and a graduation cap."
+            style="width: 55px;">
         </a>
         <h1 class="text-2xl font-bold text-primary">Scholarar</h1>
         <div class="flex space-x-12 ml-8">
@@ -475,266 +269,59 @@
     </aside>
 
     <div class="main-content">
-      <nav class="breadcrumb">
-        <a href="forum.html">Forum</a>
-        <span>›</span>
-        <a id="subforum-link" href="#">Subforum Name</a>
-        <span>›</span>
-        <a id="subsubforum-link" href="#">Question Title</a>
-      </nav>
-
-      <div class="question-details">
-        <div class="question-header">
-          <img id="questioner-avatar" src="https://picsum.photos/seed/questioner/50" alt="Questioner Avatar">
-          <div id="questioner-name">Alex Johnson</div>
+      <div class="flex items-center justify-between border-b border-zinc-200 pb-4 mb-4">
+        <h2 class="text-lg md:text-xl font-semibold">Questions</h2>
+        <div class="flex">
+          <div class="relative">
+            <input id="search-input" type="text" placeholder="Quick search..."
+              class="pl-4 pr-10 py-2 w-full md:w-64 bg-white text-zinc-700 placeholder-zinc-500 rounded-full border border-blue-700 focus:outline-none focus:border-blue-500" />
+          </div>
         </div>
-        <h1 id="question-title">Does MEXT Scholarship cover living expenses?</h1>
-        <p id="question-description">I want to know if the MEXT Scholarship provides any allowances for living expenses.</p>
+      </div>
+      <div id="question-list" class="question-list">
+        <!-- Questions will be dynamically inserted here -->
       </div>
 
-      <div class="comments-section">
-        <h2>Answers</h2>
-        <div class="comment-box">
-          <textarea id="commentBox" class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="4" placeholder="Write an answer..."></textarea>
-          <button onclick="postComment()">Post Answer</button>
-        </div>
-        <div id="commentList" class="mt-4"></div>
+      <!-- Pagination Controls -->
+      <div class="flex justify-center mt-6">
+        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+          <button id="prev-btn"
+            class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
+            Previous
+          </button>
+          <div id="pagination-numbers" class="flex space-x-1">
+            <!-- Page numbers will be dynamically inserted here -->
+          </div>
+          <button id="next-btn"
+            class="relative inline-flex items-center px-4 py-2 border border-zinc-300 text-sm font-medium text-zinc-500 bg-white hover:bg-zinc-50">
+            Next
+          </button>
+        </nav>
       </div>
     </div>
   </div>
 
   <script>
-    function postComment() {
-      const commentBox = document.getElementById('commentBox');
-      const commentList = document.getElementById('commentList');
-      const newComment = document.createElement('div');
-      newComment.className = 'comment';
-      const commentId = `comment-${Date.now()}`;
-      newComment.innerHTML = `
-        <div class="answer-header">
-          <img src="https://picsum.photos/seed/your-avatar/50" alt="Your Avatar">
-          <div>You</div>
-        </div>
-        <p>${commentBox.value}</p>
-        <div class="comment-footer">
-          <button onclick="likeComment(this)">
-            <i class="fa fa-thumbs-up"></i> Like
-          </button>
-          <span>0 likes</span>
-          <button onclick="toggleReplyBox('${commentId}')">Reply</button>
-        </div>
-        <div class="reply-section" id="${commentId}">
-          <div class="reply-box">
-            <textarea class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="2" placeholder="Write a reply..."></textarea>
-            <button onclick="postReply(this)">Post Reply</button>
-          </div>
-        </div>
-      `;
-      commentList.appendChild(newComment);
-      commentBox.value = ''; // Clear the textarea after posting
-    }
-
-    function postReply(button) {
-      const replyBox = button.parentElement;
-      const replySection = replyBox.parentElement;
-      const newReply = document.createElement('div');
-      newReply.className = 'reply';
-      newReply.innerHTML = `
-        <p><span class="user-name">You:</span> ${replyBox.querySelector('textarea').value}</p>
-      `;
-      replySection.insertBefore(newReply, replyBox);
-      replyBox.querySelector('textarea').value = ''; // Clear the textarea after posting
-    }
-
-    function toggleReplyBox(commentId) {
-      const replyBox = document.getElementById(commentId).querySelector('.reply-box');
-      if (replyBox.style.display === 'none' || replyBox.style.display === '') {
-        replyBox.style.display = 'flex';
-      } else {
-        replyBox.style.display = 'none';
-      }
-    }
-
-    function likeComment(button) {
-      const span = button.nextElementSibling;
-      let likes = parseInt(span.innerText);
-      span.innerText = `${++likes} likes`;
-    }
-
-    // Example data (replace this with actual data fetching logic)
-    const questions = [
+    const scholarships = [
       {
-        id: 101,
-        scholarshipId: 1,
-        title: "Does MEXT Scholarship cover living expenses?",
-        description: "I want to know if the MEXT Scholarship provides any allowances for living expenses.",
-        user: {
-          name: "Alex Johnson",
-          avatar: "https://picsum.photos/seed/questioner/50"
-        },
-        comments: [
+        id: 1,
+        title: "MEXT Scholarship 2023",
+        description: "Japanese Government Scholarship",
+        questions: [
           {
-            id: 1,
-            user: {
-              name: "John Doe",
-              avatar: "https://picsum.photos/seed/user1/50"
-            },
-            content: "The MEXT Scholarship does cover living expenses. You will receive a monthly stipend.",
-            replies: [
-              {
-                id: 1,
-                user: {
-                  name: "Alice Johnson",
-                  avatar: "https://picsum.photos/seed/user2/50"
-                },
-                content: "Thank you for the information!"
-              }
-            ]
+            id: 101,
+            title: "Does MEXT Scholarship cover living expenses?",
+            description: "I want to know if the MEXT Scholarship provides any allowances for living expenses.",
           },
           {
-            id: 2,
-            user: {
-              name: "Jane Smith",
-              avatar: "https://picsum.photos/seed/user2/50"
-            },
-            content: "I applied last year, and the process was quite straightforward. Make sure you have all your documents ready.",
-            replies: []
+            id: 102,
+            title: "What are the eligibility criteria for MEXT Scholarship?",
+            description: "Can someone explain the eligibility requirements for applying to the MEXT Scholarship?",
           }
         ]
-      },
-      {
-        id: 102,
-        scholarshipId: 1,
-        title: "What are the eligibility criteria for MEXT Scholarship?",
-        description: "Can someone explain the eligibility requirements for applying to the MEXT Scholarship?",
-        user: {
-          name: "Chris Lee",
-          avatar: "https://picsum.photos/seed/questioner2/50"
-        },
-        comments: [
-          {
-            id: 3,
-            user: {
-              name: "David Kim",
-              avatar: "https://picsum.photos/seed/user3/50"
-            },
-            content: "You need to have a minimum GPA of 2.3 on a 3.0 scale and meet the language proficiency requirements.",
-            replies: [
-              {
-                id: 2,
-                user: {
-                  name: "Emma Brown",
-                  avatar: "https://picsum.photos/seed/user4/50"
-                },
-                content: "Is there any age limit for the scholarship?"
-              },
-              {
-                id: 3,
-                user: {
-                  name: "David Kim",
-                  avatar: "https://picsum.photos/seed/user3/50"
-                },
-                content: "Yes, you should be under 35 years of age at the time of application."
-              }
-            ]
-          },
-          {
-            id: 4,
-            user: {
-              name: "Sophia Turner",
-              avatar: "https://picsum.photos/seed/user5/50"
-            },
-            content: "In addition to GPA and language requirements, you need to pass the entrance exam.",
-            replies: []
-          }
-        ]
-      },
-      {
-        id: 201,
-        scholarshipId: 2,
-        title: "How to apply for GKS Scholarship?",
-        description: "Can anyone provide a step-by-step guide on applying for the GKS Scholarship?",
-        user: {
-          name: "Emma Brown",
-          avatar: "https://picsum.photos/seed/questioner3/50"
-        },
-        comments: []
       }
-      // Add more questions as needed
     ];
 
-    // Extract query parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const scholarshipId = urlParams.get('scholarshipId');
-    const questionId = urlParams.get('questionId');
-
-    
-    // Find the question by ID
-    const question = questions.find(q => q.id === parseInt(questionId) && q.scholarshipId === parseInt(scholarshipId));
-
-    // Populate the page with question details
-    if (question) {
-      document.getElementById('question-title').textContent = question.title;
-      document.getElementById('question-description').textContent = question.description;
-      document.querySelector('.question-header img').src = question.user.avatar;
-      document.querySelector('.question-header div').textContent = question.user.name;
-      document.getElementById('subforum-link').textContent = question.title;
-      document.getElementById('subforum-link').href = `subforum.html?id=${scholarshipId}`;
-      document.getElementById('subsubforum-link').textContent = question.title;
-      document.getElementById('subsubforum-link').href = `subsubforum.html?scholarshipId=${scholarshipId}&questionId=${questionId}`;
-      loadComments(question.comments);
-      // Populate the sidebar with scholarship title and description
-      document.getElementById('sidebar-menu').insertAdjacentHTML('afterbegin', `
-        <div class="sidebar-title">${question.title}</div>
-        <div class="sidebar-description">${question.description}</div>
-      `);
-    } else {
-      document.getElementById('question-title').textContent = 'Question not found';
-    }
-
-    function loadComments(comments) {
-      const commentList = document.getElementById('commentList');
-      comments.forEach(comment => {
-        const commentId = `comment-${comment.id}`;
-        const commentDiv = document.createElement('div');
-        commentDiv.className = 'comment';
-        commentDiv.innerHTML = `
-          <div class="answer-header">
-            <img src="${comment.user.avatar}" alt="User Avatar">
-            <div>${comment.user.name}</div>
-          </div>
-          <p>${comment.content}</p>
-          <div class="comment-footer">
-            <button onclick="likeComment(this)">
-              <i class="fa fa-thumbs-up"></i> Like
-            </button>
-            <span>0 likes</span>
-            <button onclick="toggleReplyBox('${commentId}')">Reply</button>
-          </div>
-          <div class="reply-section" id="${commentId}">
-            <div class="reply-box">
-              <textarea class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="2" placeholder="Write a reply..."></textarea>
-              <button onclick="postReply(this)">Post Reply</button>
-            </div>
-          </div>
-        `;
-        commentList.appendChild(commentDiv);
-        loadReplies(comment.replies, commentDiv.querySelector('.reply-section'));
-      });
-    }
-
-    function loadReplies(replies, replySection) {
-      replies.forEach(reply => {
-        const replyDiv = document.createElement('div');
-        replyDiv.className = 'reply';
-        replyDiv.innerHTML = `
-          <p><span class="user-name">${reply.user.name}:</span> ${reply.content}</p>
-        `;
-        replySection.insertBefore(replyDiv, replySection.querySelector('.reply-box'));
-      });
-    }
-
-    // Sidebar menu data
     const menuData = [
       {
         title: 'Host Universities',
@@ -880,6 +467,128 @@
       }
     ];
 
+    const itemsPerPage = 2;
+    let currentPage = 1;
+    let filteredQuestions = [];
+    let currentScholarshipQuestions = [];
+
+    const questionList = document.getElementById('question-list');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const paginationNumbers = document.getElementById('pagination-numbers');
+    const searchInput = document.getElementById('search-input');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const scholarshipId = urlParams.get('id');
+    const subforumName = urlParams.get('subforumName');
+
+    const scholarship = scholarships.find(s => s.id === parseInt(scholarshipId));
+
+    if (scholarship) {
+      document.getElementById('sidebar-menu').insertAdjacentHTML('afterbegin', `
+        <div class="sidebar-title">${scholarship.title}</div>
+        <div class="sidebar-description">${scholarship.description}</div>
+      `);
+      currentScholarshipQuestions = scholarship.questions;
+      filterQuestions();
+    } else {
+      document.getElementById('subforum-title').textContent = 'Scholarship not found';
+    }
+
+    function filterQuestions() {
+      const searchTerm = searchInput.value.toLowerCase();
+      filteredQuestions = currentScholarshipQuestions.filter(question =>
+        question.title.toLowerCase().includes(searchTerm) ||
+        question.description.toLowerCase().includes(searchTerm)
+      );
+      currentPage = 1;
+      renderQuestions();
+    }
+
+    function renderQuestions() {
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentQuestions = filteredQuestions.slice(startIndex, endIndex);
+
+      questionList.innerHTML = currentQuestions.map(question => `
+        <a href="subsubforum.html?scholarshipId=${scholarship.id}&questionId=${question.id}&subforumName=${encodeURIComponent(subforumName)}" class="question-item">
+          <h3>${question.title}</h3>
+          <p>${question.description}</p>
+          <span>View Discussion</span>
+        </a>
+      `).join('');
+
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === Math.ceil(filteredQuestions.length / itemsPerPage);
+
+      renderPageNumbers();
+    }
+
+    function renderPageNumbers() {
+      const totalPages = Math.ceil(filteredQuestions.length / itemsPerPage);
+      paginationNumbers.innerHTML = '';
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.innerText = i;
+        pageButton.classList.add('relative', 'inline-flex', 'items-center', 'px-4', 'py-2', 'border', 'text-sm', 'font-medium');
+
+        if (i === currentPage) {
+          pageButton.classList.add('z-10', 'bg-blue-50', 'border-blue-500', 'text-blue-600');
+        } else {
+          pageButton.classList.add('bg-white', 'border-zinc-300', 'text-zinc-500', 'hover:bg-zinc-50');
+        }
+
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          renderQuestions();
+        });
+
+        paginationNumbers.appendChild(pageButton);
+      }
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderQuestions();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < Math.ceil(filteredQuestions.length / itemsPerPage)) {
+        currentPage++;
+        renderQuestions();
+      }
+    });
+
+    searchInput.addEventListener('input', filterQuestions);
+
+    filterQuestions();
+
+    function toggleMenu(menuId) {
+      const submenu = document.getElementById(menuId);
+      const icon = submenu.previousElementSibling.querySelector('.fa-chevron-down, .fa-chevron-up');
+      if (submenu.style.display === 'none' || submenu.style.display === '') {
+        submenu.style.display = 'block';
+        if (icon) {
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+        }
+      } else {
+        submenu.style.display = 'none';
+        if (icon) {
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+        }
+      }
+    }
+
+    function toggleSubmenu(event, submenuId) {
+      event.stopPropagation();
+      toggleMenu(submenuId);
+    }
+
     function renderMenu() {
       const sidebarMenu = document.getElementById('sidebar-menu');
       sidebarMenu.innerHTML += menuData.map(section => `
@@ -963,30 +672,8 @@
       });
     }
 
-    function toggleMenu(menuId) {
-      const submenu = document.getElementById(menuId);
-      const icon = submenu.previousElementSibling.querySelector('.fa-chevron-down, .fa-chevron-up');
-      if (submenu.style.display === 'none' || submenu.style.display === '') {
-        submenu.style.display = 'block';
-        if (icon) {
-          icon.classList.remove('fa-chevron-down');
-          icon.classList.add('fa-chevron-up');
-        }
-      } else {
-        submenu.style.display = 'none';
-        if (icon) {
-          icon.classList.remove('fa-chevron-up');
-          icon.classList.add('fa-chevron-down');
-        }
-      }
-    }
-
-    function toggleSubmenu(event, submenuId) {
-      event.stopPropagation();
-      toggleMenu(submenuId);
-    }
-
     renderMenu();
   </script>
 </body>
+
 </html>
