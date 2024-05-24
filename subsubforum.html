@@ -539,10 +539,28 @@
       const replySection = replyBox.parentElement;
       const newReply = document.createElement('div');
       newReply.className = 'reply';
+      const replyId = `reply-${Date.now()}`;
       newReply.innerHTML = `
+        <div class="answer-header">
+          <img src="https://picsum.photos/seed/your-avatar/50" alt="Your Avatar">
+          <div>You</div>
+        </div>
         <p><span class="user-name">You:</span> ${replyBox.querySelector('textarea').value}</p>
+        <div class="comment-footer">
+          <button onclick="likeComment(this)">
+            <i class="fa fa-thumbs-up"></i> Like
+          </button>
+          <span>0 likes</span>
+          <button onclick="toggleReplyBox('${replyId}')">Reply</button>
+        </div>
+        <div class="reply-section" id="${replyId}">
+          <div class="reply-box">
+            <textarea class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="2" placeholder="Write a reply..."></textarea>
+            <button onclick="postReply(this)">Post Reply</button>
+          </div>
+        </div>
       `;
-      replySection.insertBefore(newReply, replyBox);
+      replySection.appendChild(newReply);
       replyBox.querySelector('textarea').value = ''; // Clear the textarea after posting
     }
 
@@ -725,12 +743,30 @@
 
     function loadReplies(replies, replySection) {
       replies.forEach(reply => {
+        const replyId = `reply-${reply.id}`;
         const replyDiv = document.createElement('div');
         replyDiv.className = 'reply';
         replyDiv.innerHTML = `
+          <div class="answer-header">
+            <img src="${reply.user.avatar}" alt="User Avatar">
+            <div>${reply.user.name}</div>
+          </div>
           <p><span class="user-name">${reply.user.name}:</span> ${reply.content}</p>
+          <div class="comment-footer">
+            <button onclick="likeComment(this)">
+              <i class="fa fa-thumbs-up"></i> Like
+            </button>
+            <span>0 likes</span>
+            <button onclick="toggleReplyBox('${replyId}')">Reply</button>
+          </div>
+          <div class="reply-section" id="${replyId}">
+            <div class="reply-box">
+              <textarea class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="2" placeholder="Write a reply..."></textarea>
+              <button onclick="postReply(this)">Post Reply</button>
+            </div>
+          </div>
         `;
-        replySection.insertBefore(replyDiv, replySection.querySelector('.reply-box'));
+        replySection.appendChild(replyDiv);
       });
     }
 
