@@ -305,7 +305,7 @@
     const scholarships = [
       {
         id: 1,
-        title: "MEXT Scholarship 2023",
+        title: "MEXT Scholarship 2025",
         description: "Japanese Government Scholarship",
         questions: [
           {
@@ -479,7 +479,7 @@
     const searchInput = document.getElementById('search-input');
 
     const urlParams = new URLSearchParams(window.location.search);
-    const scholarshipId = urlParams.get('id');
+    const scholarshipId = urlParams.get('scholarshipId');
     const subforumName = urlParams.get('subforumName');
 
     const scholarship = scholarships.find(s => s.id === parseInt(scholarshipId));

@@ -440,9 +440,6 @@
       margin-bottom: 20px;
     }
   </style>
-
-
-
 </head>
 <body class="bg-gray-100">
   <header class="bg-white header">
@@ -478,9 +475,9 @@
       <nav class="breadcrumb">
         <a href="forum.html">Forum</a>
         <span>›</span>
-        <a id="subforum-link" href="#">Subforum Name</a>
+        <a id="subforum-link" href="#"></a>
         <span>›</span>
-        <a id="subsubforum-link" href="#">Question Title</a>
+        <a id="subsubforum-link" href="#">Does MEXT Scholarship cover living expenses?</a>
       </nav>
 
       <div class="question-details">
@@ -584,6 +581,7 @@
       {
         id: 101,
         scholarshipId: 1,
+        scholarshipName: "MEXT Scholarship 2025",
         title: "Does MEXT Scholarship cover living expenses?",
         description: "I want to know if the MEXT Scholarship provides any allowances for living expenses.",
         user: {
@@ -623,6 +621,7 @@
       {
         id: 102,
         scholarshipId: 1,
+        scholarshipName: "MEXT Scholarship",
         title: "What are the eligibility criteria for MEXT Scholarship?",
         description: "Can someone explain the eligibility requirements for applying to the MEXT Scholarship?",
         user: {
@@ -670,6 +669,7 @@
       {
         id: 201,
         scholarshipId: 2,
+        scholarshipName: "GKS Scholarship",
         title: "How to apply for GKS Scholarship?",
         description: "Can anyone provide a step-by-step guide on applying for the GKS Scholarship?",
         user: {
@@ -686,7 +686,6 @@
     const scholarshipId = urlParams.get('scholarshipId');
     const questionId = urlParams.get('questionId');
 
-    
     // Find the question by ID
     const question = questions.find(q => q.id === parseInt(questionId) && q.scholarshipId === parseInt(scholarshipId));
 
@@ -696,14 +695,14 @@
       document.getElementById('question-description').textContent = question.description;
       document.querySelector('.question-header img').src = question.user.avatar;
       document.querySelector('.question-header div').textContent = question.user.name;
-      document.getElementById('subforum-link').textContent = question.title;
-      document.getElementById('subforum-link').href = `subforum.html?id=${scholarshipId}`;
+      document.getElementById('subforum-link').textContent = question.scholarshipName;
+      document.getElementById('subforum-link').href = `subforum.html?scholarshipId=${scholarshipId}`;
       document.getElementById('subsubforum-link').textContent = question.title;
       document.getElementById('subsubforum-link').href = `subsubforum.html?scholarshipId=${scholarshipId}&questionId=${questionId}`;
       loadComments(question.comments);
       // Populate the sidebar with scholarship title and description
       document.getElementById('sidebar-menu').insertAdjacentHTML('afterbegin', `
-        <div class="sidebar-title">${question.title}</div>
+        <div class="sidebar-title">${question.scholarshipName}</div>
         <div class="sidebar-description">${question.description}</div>
       `);
     } else {
