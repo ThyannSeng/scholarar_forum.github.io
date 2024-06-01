@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarar Forum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .post-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-section h2 {
+            margin-bottom: 20px;
+        }
+        .post-section select, .post-section button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .scholarship-info, .important-links {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .scholarship-info ul, .important-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        .scholarship-info li, .important-links li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .scholarship-info li:last-child, .important-links li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Scholarar Forum</h1>
+        </header>
+        <div class="post-section">
+            <h2>Post a Question</
+                <select id="postType">
+                    <option value="scholarship">Scholarship</option>
+                    <option value="forum">Forum</option>
+                </select>
+                <select id="postCategory">
+                    <option value="application">Scholarship Applications</option>
+                    <option value="studyTips">Study Tips</option>
+                    <option value="careerAdvice">Career Advice</option>
+                    <option value="countrySpecific">Country-Specific Discussions</option>
+                </select>
+                <button onclick="submitPost()">Post</button>
+            </div>
+            <div class="scholarship-info">
+                <h2>Scholarship Information</h2>
+                <ul>
+                    <li>Scholarship 1 - <a href="#">Details</a></li>
+                    <li>Scholarship 2 - <a href="#">Details</a></li>
+                    <li>Scholarship 3 - <a href="#">Details</a></li>
+                    <li>Scholarship 4 - <a href="#">Details</a></li>
+                </ul>
+            </div>
+            <div class="important-links">
+                <h2>Important Links</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            function submitPost() {
+                const postType = document.getElementById('postType').value;
+                const postCategory = document.getElementById('postCategory').value;
+                alert(`Post Type: ${postType}\nCategory: ${postCategory}`);
+                // Here you can add the code to handle the post submission, e.g., sending data to the server
+            }
+        </script>
+    </body>
+    </html>
+    

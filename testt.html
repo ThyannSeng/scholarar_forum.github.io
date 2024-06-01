@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Post Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+
+        .post-input-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            resize: none;
+        }
+
+        .post-options {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+
+        .post-options button {
+            background: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .post-options button:hover {
+            background: #0056b3;
+        }
+
+        #extraInputContainer {
+            margin-bottom: 10px;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .post-actions select {
+            background: #6c757d;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .post-actions select:hover {
+            background: #5a6268;
+        }
+
+        #postButton {
+            width: 100%;
+            background: #28a745;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #postButton:hover {
+            background: #218838;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .preview-container {
+            margin-top: 10px;
+        }
+
+        .preview-container img, .preview-container video {
+            max-width: 100px;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .preview-container a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .preview-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="post-input-container">
+        <textarea id="postText" placeholder="What's on your mind?"></textarea>
+        <div class="post-options">
+            <button id="imageButton">Image</button>
+            <button id="videoButton">Video</button>
+            <button id="linkButton">Link</button>
+            <button id="fileButton">File</button>
+        </div>
+        <div id="extraInputContainer"></div>
+        <div id="previewContainer" class="preview-container"></div>
+        <div class="post-actions">
+            <select id="postToDropdown">
+                <option value="">Post To</option>
+                <option value="scholarship">Scholarship</option>
+                <option value="forum">Forum</option>
+            </select>
+            <select id="detailDropdown" disabled>
+                <option value="">Select...</option>
+            </select>
+        </div>
+        <div class="error" id="error">Please select where to post and the specific scholarship or forum.</div>
+        <button id="postButton">Post</button>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="postTitle">Post Preview</h2>
+            <p id="postTextPreview"></p>
+            <div id="modalPreviewContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        const scholarships = {
+            scholarship1: "Scholarship 1",
+            scholarship2: "Scholarship 2",
+            // Add more scholarships here
+        };
+
+        const forums = {
+            forum1: "Forum 1",
+            forum2: "Forum 2",
+            // Add more forums here
+        };
+
+        document.getElementById('imageButton').addEventListener('click', function() {
+            addExtraInput('image');
+        });
+
+        document.getElementById('videoButton').addEventListener('click', function() {
+            addExtraInput('video');
+        });
+
+        document.getElementById('linkButton').addEventListener('click', function() {
+            addExtraInput('link');
+        });
+
+        document.getElementById('fileButton').addEventListener('click', function() {
+            addExtraInput('file');
+        });
+
+        document.getElementById('postToDropdown').addEventListener('change', function() {
+            const selectedValue = this.value;
+            const detailDropdown = document.getElementById('detailDropdown');
+
+            detailDropdown.innerHTML = '<option value="">Select...</option>'; // Reset detail dropdown
+
+            if (selectedValue) {
+                detailDropdown.disabled = false;
+                let options = selectedValue === 'scholarship' ? scholarships : forums;
+                for (const [key, value] of Object.entries(options)) {
+                    let option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = value;
+                    detailDropdown.appendChild(option);
+                }
+            } else {
+                detailDropdown.disabled = true;
+            }
+        });
+
+        document.getElementById('postButton').addEventListener('click', function() {
+            const postToValue = document.getElementById('postToDropdown').value;
+            const detailValue = document.getElementById('detailDropdown').value;
+
+            if (!postToValue || !detailValue) {
+                document.getElementById('error').style.display = 'block';
+            } else {
+                document.getElementById('error').style.display = 'none';
+                showPostPreview(postToValue, detailValue);
+            }
+        });
+
+        function addExtraInput(type) {
+            let container = document.getElementById('extraInputContainer');
+            container.innerHTML = '';
+
+            let input = document.createElement('input');
+            input.type = 'file';
+            input.accept = type === 'image' ? 'image/*' : type === 'video' ? 'video/*' : '*/*';
+            input.onchange = () => displayPreview(input, type);
+
+            container.appendChild(input);
+        }
+
+        function displayPreview(input, type) {
+            const previewContainer = document.getElementById('previewContainer');
+            previewContainer.innerHTML = ''; // Clear previous previews
+
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    if (type === 'image') {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.maxWidth = "100px"; // Limit the width of the preview
+                        img.style.height = "auto";
+                        previewContainer.appendChild(img);
+                    } else if (type === 'video') {
+                        const video = document.createElement('video');
+                        video.src = e.target.result;
+                        video.controls = true;
+                        video.style.maxWidth = "100px"; // Limit the width of the preview
+                        video.style.height = "auto";
+                        previewContainer.appendChild(video);
+                    } else {
+                        const link = document.createElement('a');
+                        link.href = e.target.result;
+                        link.textContent = file.name;
+                        link.download = file.name;
+                        previewContainer.appendChild(link);
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function showPostPreview(postTo, detail) {
+            let postText = document.getElementById('postText').value;
+            let extraInput = document.getElementById('extraInputContainer').querySelector('input[type="file"]');
+            let extraFile = extraInput ? extraInput.files[0] : null;
+
+            document.getElementById('postTextPreview').innerText = postText;
+            const modalPreviewContainer = document.getElementById('modalPreviewContainer');
+            modalPreviewContainer.innerHTML = ''; // Clear previous previews
+
+            if (extraFile) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    if (extraFile.type.startsWith('image/')) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.maxWidth = "100%"; // Ensure the image fits in the modal
+                        modalPreviewContainer.appendChild(img);
+                    } else if (extraFile.type.startsWith('video/')) {
+                        const video = document.createElement('video');
+                        video.src = e.target.result;
+                        video.controls = true;
+                        video.style.maxWidth = "100%"; // Ensure the video fits in the modal
+                        modalPreviewContainer.appendChild(video);
+                    } else {
+                        const link = document.createElement('a');
+                        link.href = e.target.result;
+                        link.textContent = extraFile.name;
+                        link.download = extraFile.name;
+                        modalPreviewContainer.appendChild(link);
+                    }
+                };
+                reader.readAsDataURL(extraFile);
+            }
+
+            let modal = document.getElementById("myModal");
+            let span = document.getElementsByClassName("close")[0];
+
+            modal.style.display = "block";
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

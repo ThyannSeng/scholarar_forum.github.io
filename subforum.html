@@ -271,11 +271,15 @@
     <div class="main-content">
       <div class="flex items-center justify-between border-b border-zinc-200 pb-4 mb-4">
         <h2 class="text-lg md:text-xl font-semibold">Questions</h2>
-        <div class="flex">
+        <div class="flex space-x-4">
+          <button id="ask-question-btn"
+          class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300">Ask
+          Question</button>
           <div class="relative">
             <input id="search-input" type="text" placeholder="Quick search..."
               class="pl-4 pr-10 py-2 w-full md:w-64 bg-white text-zinc-700 placeholder-zinc-500 rounded-full border border-blue-700 focus:outline-none focus:border-blue-500" />
           </div>
+
         </div>
       </div>
       <div id="question-list" class="question-list">

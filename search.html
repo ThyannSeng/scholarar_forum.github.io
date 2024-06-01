@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search with Filters</title>
+    <style>
+          .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f8f8f8; /* Adjusted background color */
+  }
+  .search-bar, .filters {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+  .search-bar {
+      border: 1px solid #ccc; /* Darker border color */
+      border-radius: 5px;
+      padding: 10px;
+      background-color: #fff; /* Ensure the background is white, or choose another color */
+  }
+  .search-bar input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 16px;
+  }
+  .filters .filter {
+      flex: 1;
+      margin: 0 5px;
+      border: 1px solid #ccc; /* Darker border color */
+      border-radius: 5px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+  }
+  .filters .filter label {
+      font-size: 12px;
+      color: #FF5733;
+      margin-bottom: 5px;
+  }
+  .filters .filter select, .filters .filter .selected-value {
+      border: none;
+      outline: none;
+      font-size: 14px;
+  }
+  .icon-search {
+      margin-right: 10px;
+  }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-bar">
+            <span class="icon-search">🔍</span>
+            <input type="text" placeholder="Search keywords...">
+        </div>
+        <div class="filters">
+            <div class="filter">
+                <label for="destination">DESTINATION</label>
+                <select id="destination" name="destination">
+                    <option value="">Select destination</option>
+                    
+                </select>
+            </div>
+            <div class="filter">
+                <label for="degree-level">DEGREE LEVEL</label>
+                <select id="degree-level" name="degree-level">
+                    <option value="">Select degree level</option>
+                    
+                </select>
+            </div>
+            <div class="filter">
+                <label for="type-of-program">TYPE OF PROGRAM</label>
+                <select id="type-of-program" name="type-of-program">
+                    <option value="">Select type</option>
+                    
+                </select>
+            </div>
+            <div class="filter">
+                <label for="status">STATUS</label>
+                <select id="status" name="status">
+                    <option value="">Select status</option>
+                    
+                </select>
+            </div>
+            <div class="filter">
+                <label for="sort-by">SORT BY</label>
+                <select id="sort-by" name="sort-by">
+                    <option value="">Select sort by</option>
+                    
+                </select>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+  </body>
+</html>
