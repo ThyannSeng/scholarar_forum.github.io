@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tab-button {
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .tab-button.active-tab {
+            background-color: #e8e8e8;
+        }
+
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination-controls button {
+            padding: 10px 15px;
+            border: 1px solid #d3d3d3;
+            background-color: white;
+            color: #374151;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 0;
+        }
+
+        .pagination-controls button:hover {
+            background-color: #f9fafb;
+        }
+
+        .pagination-controls button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .pagination-controls button:first-child {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .pagination-controls button:last-child {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .pagination-controls .current-page {
+            background-color: #e5e7eb;
+            font-weight: bold;
+            border-color: #007bff;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header Section -->
+    <div class="container mx-auto p-4">
+        <div class="card profile-info">
+            <img src="profile-picture-placeholder.png" alt="Profile Picture" class="w-36 h-36 rounded-full">
+            <div>
+                <h1 class="text-4xl font-bold">John Doe</h1>
+                <button class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Edit Profile</button>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque erat sit amet nibh gravida, nec facilisis mauris ultrices.</p>
+            <ul class="mt-2">
+                <li class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 11-8 0 4 4 0 018 0zM12 14v7m-1 0h2a1 1 0 001-1v-4a1 1 0 00-1-1h-2a1 1 0 00-1 1v4a1 1 0 001 1z" />
+                    </svg>
+                    <span>Email: john.doe@example.com</span>
+                </li>
+                <li class="flex items-center space-x-2 mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89-6.21a4 4 0 014.22 0L23 8M21 10v10a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 01-2 2H3a2 2 0 01-2-2V10m18 0L12 4m0 0L6 10" />
+                    </svg>
+                    <span>Location: New York, USA</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Activity Section -->
+    <div class="container mx-auto p-4">
+        <div class="border-b border-gray-300 mb-4">
+            <ul class="flex space-x-4">
+                <li><button class="tab-button active-tab" onclick="showTab('overview')">Overview</button></li>
+                <li><button class="tab-button" onclick="showTab('posts')">Posts</button></li>
+                <li><button class="tab-button" onclick="showTab('replies')">Replies</button></li>
+                <li><button class="tab-button" onclick="showTab('liked')">Liked Scholarships</button></li>
+                <li><button class="tab-button" onclick="showTab('subscribed')">Subscribed Scholarship Forum</button></li>
+            </ul>
+        </div>
+
+        <div id="overview" class="tab-content">
+            <h2 class="text-2xl font-bold mb-4">Overview</h2>
+            <p>Summary of recent activity...</p>
+        </div>
+
+        <div id="posts" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-4">Posts</h2>
+            <ul id="posts-list">
+                <!-- JavaScript will populate this list -->
+            </ul>
+            <div class="pagination-controls" id="posts-pagination">
+                <!-- JavaScript will populate pagination controls here -->
+            </div>
+        </div>
+
+        <div id="replies" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-4">Replies</h2>
+            <ul id="replies-list">
+                <!-- JavaScript will populate this list -->
+            </ul>
+            <div class="pagination-controls" id="replies-pagination">
+                <!-- JavaScript will populate pagination controls here -->
+            </div>
+        </div>
+
+        <div id="liked" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-4">Liked Scholarships</h2>
+            <ul>
+                <li class="card mb-2">
+                    <h3 class="post-title">Scholarship Title 1</h3>
+                    <p>Excerpt from scholarship 1...</p>
+                </li>
+                <li class="card mb-2">
+                    <h3 class="post-title">Scholarship Title 2</h3>
+                    <p>Excerpt from scholarship 2...</p>
+                </li>
+            </ul>
+        </div>
+
+        <div id="subscribed" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-4">Subscribed Scholarship Forum</h2>
+            <ul>
+                <li class="card mb-2">
+                    <h3 class="post-title">Forum Topic 1</h3>
+                    <p>Excerpt from forum topic 1...</p>
+                </li>
+                <li class="card mb-2">
+                    <h3 class="post-title">Forum Topic 2</h3>
+                    <p>Excerpt from forum topic 2...</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Settings Section -->
+    <div class="container mx-auto p-4">
+        <h2 class="text-2xl font-bold mb-4">Settings</h2>
+        <div class="card mb-4">
+            <h3 class="text-xl font-semibold">Preferences</h3>
+            <div class="mt-2">
+                <label class="block">
+                    <span class="text-gray-700">Notification Settings</span>
+                    <select class="form-select mt-1 block w-full">
+                        <option>Email Notifications</option>
+                        <option>SMS Notifications</option>
+                        <option>Push Notifications</option>
+                    </select>
+                </label>
+                <label class="block mt-4">
+                    <span class="text-gray-700">Language Preferences</span>
+                    <select class="form-select mt-1 block w-full">
+                        <option>English</option>
+                        <option>Spanish</option>
+                        <option>French</option>
+                    </select>
+                </label>
+                <label class="block mt-4">
+                    <span class="text-gray-700">Theme</span>
+                    <select class="form-select mt-1 block w-full">
+                        <option>Light</option>
+                        <option>Dark</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="card">
+            <h3 class="text-xl font-semibold">Security</h3>
+            <div class="mt-2">
+                <label class="block">
+                    <span class="text-gray-700">Password</span>
+                    <input type="password" class="form-input mt-1 block w-full">
+                </label>
+                <label class="block mt-4">
+                    <span class="text-gray-700">Two-Factor Authentication</span>
+                    <input type="checkbox" class="form-checkbox mt-1">
+                    <span class="ml-2">Enable Two-Factor Authentication</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container mx-auto p-4 mt-8">
+        <footer class="border-t border-gray-300 pt-4">
+            <ul class="flex justify-center space-x-4">
+                <li><a href="#" class="text-gray-700 hover:text-blue-500">Terms of Service</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-blue-500">Privacy Policy</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-blue-500">Help Center</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        let posts = [
+            { title: "Post Title 1", excerpt: "Excerpt from post 1..." },
+            { title: "Post Title 2", excerpt: "Excerpt from post 2..." },
+            { title: "Post Title 3", excerpt: "Excerpt from post 3..." },
+            { title: "Post Title 4", excerpt: "Excerpt from post 4..." },
+            { title: "Post Title 5", excerpt: "Excerpt from post 5..." },
+            { title: "Post Title 6", excerpt: "Excerpt from post 6..." },
+            { title: "Post Title 7", excerpt: "Excerpt from post 7..." },
+            { title: "Post Title 8", excerpt: "Excerpt from post 8..." },
+            { title: "Post Title 9", excerpt: "Excerpt from post 9..." },
+            { title: "Post Title 10", excerpt: "Excerpt from post 10..." },
+            { title: "Post Title 11", excerpt: "Excerpt from post 11..." },
+            { title: "Post Title 12", excerpt: "Excerpt from post 12..." }
+        ];
+
+        let replies = [
+            { title: "Reply to Thread Title 1", excerpt: "Excerpt from reply 1..." },
+            { title: "Reply to Thread Title 2", excerpt: "Excerpt from reply 2..." },
+            { title: "Reply to Thread Title 3", excerpt: "Excerpt from reply 3..." },
+            { title: "Reply to Thread Title 4", excerpt: "Excerpt from reply 4..." },
+            { title: "Reply to Thread Title 5", excerpt: "Excerpt from reply 5..." },
+            { title: "Reply to Thread Title 6", excerpt: "Excerpt from reply 6..." },
+            { title: "Reply to Thread Title 7", excerpt: "Excerpt from reply 7..." },
+            { title: "Reply to Thread Title 8", excerpt: "Excerpt from reply 8..." },
+            { title: "Reply to Thread Title 9", excerpt: "Excerpt from reply 9..." },
+            { title: "Reply to Thread Title 10", excerpt: "Excerpt from reply 10..." },
+            { title: "Reply to Thread Title 11", excerpt: "Excerpt from reply 11..." },
+            { title: "Reply to Thread Title 12", excerpt: "Excerpt from reply 12..." }
+        ];
+
+        let currentPagePosts = 1;
+        let currentPageReplies = 1;
+        const itemsPerPage = 10;
+
+        function paginate(array, pageNumber, itemsPerPage) {
+            const start = (pageNumber - 1) * itemsPerPage;
+            return array.slice(start, start + itemsPerPage);
+        }
+
+        function renderPosts() {
+            const postsList = document.getElementById('posts-list');
+            postsList.innerHTML = '';
+            const paginatedPosts = paginate(posts, currentPagePosts, itemsPerPage);
+            paginatedPosts.forEach(post => {
+                const postItem = document.createElement('li');
+                postItem.classList.add('card', 'mb-2');
+                postItem.innerHTML = `<h3 class="post-title">${post.title}</h3><p>${post.excerpt}</p>`;
+                postsList.appendChild(postItem);
+            });
+            renderPagination('posts', posts.length, currentPagePosts);
+        }
+
+        function renderReplies() {
+            const repliesList = document.getElementById('replies-list');
+            repliesList.innerHTML = '';
+            const paginatedReplies = paginate(replies, currentPageReplies, itemsPerPage);
+            paginatedReplies.forEach(reply => {
+                const replyItem = document.createElement('li');
+                replyItem.classList.add('card', 'mb-2');
+                replyItem.innerHTML = `<h3 class="post-title">${reply.title}</h3><p>${reply.excerpt}</p>`;
+                repliesList.appendChild(replyItem);
+            });
+            renderPagination('replies', replies.length, currentPageReplies);
+        }
+
+        function renderPagination(tab, totalItems, currentPage) {
+            const paginationElement = document.getElementById(`${tab}-pagination`);
+            paginationElement.innerHTML = '';
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+            const createPageButton = (text, page) => {
+                const button = document.createElement('button');
+                button.textContent = text;
+                if (page === currentPage) {
+                    button.classList.add('current-page');
+                }
+                button.addEventListener('click', () => {
+                    if (tab === 'posts') {
+                        currentPagePosts = page;
+                        renderPosts();
+                    } else if (tab === 'replies') {
+                        currentPageReplies = page;
+                        renderReplies();
+                    }
+                });
+                return button;
+            };
+
+            const prevButton = createPageButton('Previous', currentPage - 1);
+            prevButton.disabled = currentPage === 1;
+            paginationElement.appendChild(prevButton);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = createPageButton(i, i);
+                paginationElement.appendChild(pageButton);
+            }
+
+            const nextButton = createPageButton('Next', currentPage + 1);
+            nextButton.disabled = currentPage === totalPages;
+            paginationElement.appendChild(nextButton);
+        }
+
+        function showTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(function(content) {
+                content.classList.add('hidden');
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('ul.flex.space-x-4 li button').forEach(function(tab) {
+                tab.classList.remove('active-tab');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Add active class to the selected tab
+            event.target.classList.add('active-tab');
+
+            // Render the content of the selected tab
+            if (tabId === 'posts') {
+                renderPosts();
+            } else if (tabId === 'replies') {
+                renderReplies();
+            }
+        }
+
+        // Initial render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPosts();
+            renderReplies();
+        });
+    </script>
+</body>
+
+</html>

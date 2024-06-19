@@ -263,6 +263,14 @@
       margin: 0 5px;
     }
 
+    .question-details {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
     .question-details h1 {
       font-size: 24px;
       font-weight: 700;
@@ -321,6 +329,7 @@
       padding: 10px 20px;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     .comment-box button:hover {
@@ -332,6 +341,7 @@
       padding: 15px;
       border-radius: 5px;
       margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .comment p {
@@ -392,6 +402,7 @@
       padding: 10px 20px;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     .reply-box button:hover {
@@ -403,12 +414,14 @@
       padding: 10px;
       border-radius: 5px;
       margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .reply .user-name {
       font-weight: 600;
       margin-right: 10px;
     }
+
 
     .footer-links {
       margin-top: 20px;
@@ -487,16 +500,18 @@
         </div>
         <h1 id="question-title">Does MEXT Scholarship cover living expenses?</h1>
         <p id="question-description">I want to know if the MEXT Scholarship provides any allowances for living expenses.</p>
-      </div>
-
-      <div class="comments-section">
         <h2>Answers</h2>
         <div class="comment-box">
           <textarea id="commentBox" class="w-full p-2 text-zinc-700 border rounded-lg focus:outline-none" rows="4" placeholder="Write an answer..."></textarea>
           <button onclick="postComment()">Post Answer</button>
         </div>
+      </div>
+      <div class="comments-section">
+
         <div id="commentList" class="mt-4"></div>
       </div>
+
+     
     </div>
   </div>
 
